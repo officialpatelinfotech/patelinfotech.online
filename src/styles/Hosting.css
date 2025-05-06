@@ -1,0 +1,149 @@
+.hosting-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 20px;
+  background: #1e1e2f;
+  color: #ffffff;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ff9a56; /* Orange accent for hosting */
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #c0c0e0;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+  width: 90%;
+  max-width: 1100px;
+}
+
+.pricing-card {
+  background: #2a2a3a;
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.pricing-card.featured {
+  border: 2px solid #ff9a56;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: #ff9a56;
+  color: #1e1e2f;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.pricing-card h3 {
+  color: #ff9a56;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 20px 0;
+}
+
+.price span {
+  font-size: 1rem;
+  color: #c0c0e0;
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin: 25px 0;
+}
+
+.pricing-card li {
+  margin: 12px 0;
+  color: #e0e0ff;
+}
+
+.hosting-features {
+  margin: 50px 0;
+  width: 90%;
+  max-width: 900px;
+}
+
+.hosting-features h2 {
+  color: #ff9a56;
+  margin-bottom: 30px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+}
+
+.feature {
+  background: #252538;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.feature .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 12px 24px;
+  background-color: #ff9a56;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  color: #1e1e2f;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff8a40;
+  transform: scale(1.05);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .pricing-card.featured {
+    transform: scale(1); /* Remove highlight on mobile */
+    border: 1px solid #ff9a56;
+  }
+}

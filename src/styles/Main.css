@@ -1,0 +1,111 @@
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 20px;
+  background: #1e1e2f; /* Darker Blue for better contrast */
+  color: #ffffff; /* White for text readability */
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #7a9ed9;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #c0c0e0;
+}
+
+button {
+  padding: 12px 24px;
+  background-color: #4b47c0;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #7a9ed9;
+}
+
+main h1 {
+  font-size: 2.5rem;
+  color: #ffffff; /* White for better readability */
+  margin-bottom: 20px;
+}
+
+main p {
+  font-size: 1.2rem;
+  color: #e0e0ff; /* Light Blue for better readability */
+  margin-bottom: 30px;
+}
+
+main button {
+  background: #4b47c0; /* Purple for better contrast */
+  color: #ffffff; /* White text for readability */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+main button:hover {
+  background: #7a9ed9; /* Light Blue for hover effect */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+main button:active {
+  background: #3a3a8f; /* Darker Purple for active state */
+  transform: scale(0.95); /* Slight shrink effect on click */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  main h1 {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+  }
+
+  main p {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  main button {
+    font-size: 0.9rem; /* Adjust button size for smaller screens */
+    padding: 8px 16px;
+  }
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  background: #1e1e2f; /* Darker Blue for better contrast */
+  color: #ffffff; /* White for readability */
+  text-align: center;
+  padding: 15px 20px;
+  font-size: 0.9rem;
+  margin-top: auto; /* Push the footer to the bottom */
+}
+
+footer a {
+  color: #7a9ed9; /* Light Blue for links */
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #4b47c0; /* Purple for hover effect */
+}

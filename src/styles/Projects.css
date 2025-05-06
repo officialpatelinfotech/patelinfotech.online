@@ -1,0 +1,23 @@
+/* Attraction-Specific Styles */
+.project-highlight {
+  color: #ff9a56 !important; /* Orange accent for impact stats */
+  font-weight: 700;
+  margin: 10px 0;
+  font-size: 0.95rem;
+}
+
+.service-card:hover .project-highlight {
+  text-shadow: 0 0 8px rgba(255, 154, 86, 0.3); /* Glow effect on hover */
+}
+
+.project-link {
+  color: #ff6b9d !important; /* Pink for "See the magic" links */
+}
+
+/* Enhance card hover for "wow" factor */
+.service-card:hover {
+  transform: scale(1.02) translateY(-5px);
+  box-shadow: 
+    0 10px 25px rgba(255, 154, 86, 0.1),
+    0 5px 15px rgba(0, 0, 0, 0.3);
+}

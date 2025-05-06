@@ -1,0 +1,145 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #1e1e2f; /* Match the dark theme */
+  color: #ffffff; /* White text for readability */
+}
+
+.contactus-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 60%;
+}
+
+.contact-info {
+  width: 100%;
+  background: #2c2c3e; /* Darker background for cards */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-info p {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.contact-info img {
+  width: 100%;
+  height: 300px; /* Fixed height */
+  object-fit: contain; /* or contain, fill, scale-down */
+}
+
+/* Contact Form */
+.contact-form {
+  width: 100%;
+  background: #2c2c3e; /* Darker background for cards */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form h2 {
+  color: #ffffff; /* White for headings */
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.contact-form label {
+  text-align: left;
+  display: block;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #c0c0e0; /* Light gray for labels */
+  font-weight: 400;
+}
+
+.contact-form input,
+.contact-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px;
+  margin-top: 8px;
+  font-size: 1rem;
+  background: #3a3a4e; /* Darker input background */
+  border: 1px solid #4a4a5e;
+  border-radius: 6px;
+  color: #ffffff; /* White text for inputs */
+  resize: vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #a0a0c0; /* Light gray placeholder text */
+  opacity: 1; /* Firefox */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #7a9ed9;
+  box-shadow: 0 0 0 2px rgba(122, 158, 217, 0.2);
+}
+
+/* Call-to-Action Button */
+.contactus-cta-button {
+  display: block;
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  background: #7a9ed9;
+  color: #1e1e2f;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #8caee0;
+}
+
+/* Success and Error Messages */
+.message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contactus-main {
+    box-sizing: border-box;
+  }
+
+  .contactus-main h1 {
+    font-size: 2.2rem;
+  }
+
+  .contactus-main p {
+    font-size: 1rem;
+  }
+
+  .contactus-grid {
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
