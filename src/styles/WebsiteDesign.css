@@ -1,0 +1,170 @@
+.website-design-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #1e1e2f;
+  color: #ffffff;
+}
+
+/* Hero Section */
+.design-hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.design-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.design-hero p {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  color: #e0e0ff;
+}
+
+/* Process Section */
+.design-process {
+  padding: 60px 20px;
+  background: #252538;
+}
+
+.design-process h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #7a9ed9;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.step {
+  text-align: center;
+  padding: 30px 20px;
+  background: #2a2a3a;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-10px);
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 20px;
+  background-color: #7a9ed9;
+  color: #1e1e2f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.step h3 {
+  margin-bottom: 15px;
+}
+
+/* Portfolio Section */
+.portfolio-showcase {
+  padding: 80px 20px;
+}
+
+.portfolio-showcase h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: #7a9ed9;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.portfolio-item:hover .portfolio-image {
+  transform: scale(1.1);
+}
+
+.portfolio-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  color: white;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  transform: translateY(0);
+}
+
+/* CTA Section */
+.design-cta {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.design-cta h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+/* Button Styles */
+button {
+  padding: 15px 30px;
+  color: #1e1e2f;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .design-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}

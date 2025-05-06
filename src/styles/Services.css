@@ -1,0 +1,137 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #1e1e2f; /* Match the main page background */
+  color: #ffffff; /* White text for readability */
+}
+
+/* Header Section */
+.services-header {
+  background: linear-gradient(
+    135deg,
+    #2c5364,
+    #203a43
+  ); /* Dark gradient for header */
+  color: #ffffff; /* White text for contrast */
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.services-header h1 {
+  margin: 0;
+  font-size: 2.8rem;
+}
+
+.services-header p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #d1e8e2; /* Softer white for subtitle */
+}
+
+/* Main Section */
+.services-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 20px;
+  background: #1e1e2f; /* Match the main page background */
+  color: #ffffff; /* White text for readability */
+}
+
+.services-main h1 {
+  margin-bottom: 10px;
+}
+
+.services-main p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* Services Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 30px;
+}
+
+/* Service Card */
+.service-card {
+  background: #2c2c3e; /* Darker background for cards */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.service-card a {
+  text-decoration: none;
+}
+
+.service-card a:hover {
+  color: #5a7bb5;
+}
+
+.service-card h2 {
+  color: #7a9ed9; /* Light blue for headings */
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 1rem;
+  color: #c0c0e0; /* Softer white for text */
+  line-height: 1.6;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+}
+
+/* Call-to-Action Button */
+.cta-button {
+  margin-top: 30px;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border: none;
+  background: #7a9ed9; /* Light blue to match the page theme */
+  color: #1e1e2f; /* Dark background color for contrast */
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+  background: #5a7bb5; /* Slightly darker blue on hover */
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .services-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .services-header p {
+    font-size: 1rem;
+  }
+
+  .services-main h1 {
+    font-size: 2.2rem;
+  }
+
+  .services-main p {
+    font-size: 1rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
