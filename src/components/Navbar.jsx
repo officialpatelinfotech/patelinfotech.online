@@ -38,6 +38,9 @@ const Navbar = () => {
         <li>
           <Link to="/policies" onClick={() => setIsMenuOpen(false)}>Policies</Link>
         </li>
+        <li>
+          <Link to="/our-clients" onClick={() => setIsMenuOpen(false)}>Our Clients</Link>
+        </li>
       </ul>
     </nav>
   );

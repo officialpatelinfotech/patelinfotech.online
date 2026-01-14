@@ -1,7 +1,13 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "../styles/Hosting.css";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const Hosting = () => {
   const redirectToContact = () => {
@@ -11,68 +17,122 @@ const Hosting = () => {
   return (
     <div className="hosting-container">
       <Navbar />
-      <main>
-        <h1>Web Hosting Solutions</h1>
-        <p>
+
+      <motion.main
+        initial="hidden"
+        animate="visible"
+        variants={fadeUp}
+        transition={{ duration: 0.7 }}
+      >
+        {/* Header */}
+        <motion.h1 variants={fadeUp}>Web Hosting Solutions</motion.h1>
+        <motion.p variants={fadeUp}>
           Blazing-fast, secure, and scalable hosting tailored for your business needs.
-        </p>
-        
-        <div className="pricing-grid">
-          <div className="pricing-card">
-            <h3>Shared Hosting</h3>
-            <div className="price">₹500<span>/mo</span></div>
-            <ul>
-              <li>✓ 100GB SSD Storage</li>
-              <li>✓ Unlimited Bandwidth</li>
-              <li>✓ Free SSL Certificate</li>
-              <li>✓ 24/7 Support</li>
-            </ul>
-          </div>
-          
-          <div className="pricing-card featured">
-            <div className="popular-badge">MOST POPULAR</div>
-            <h3>VPS Hosting</h3>
-            <div className="price">₹900<span>/mo</span></div>
-            <ul>
-              <li>✓ 4GB RAM</li>
-              <li>✓ 2 vCPU Cores</li>
-              <li>✓ 100GB NVMe Storage</li>
-              <li>✓ Root Access</li>
-            </ul>
-          </div>
-          
-          <div className="pricing-card">
-            <h3>Dedicated Server</h3>
-            <div className="price">₹3500<span>/mo</span></div>
-            <ul>
-              <li>✓ 32GB RAM</li>
-              <li>✓ 8 CPU Cores</li>
-              <li>✓ 1TB SSD Storage</li>
-              <li>✓ DDoS Protection</li>
-            </ul>
-          </div>
-        </div>
+        </motion.p>
 
-        <div className="hosting-features">
+        {/* Pricing */}
+        <motion.div
+          className="pricing-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          transition={{ staggerChildren: 0.2 }}
+        >
+          {[
+            {
+              title: "Shared Hosting",
+              price: "₹500",
+              features: [
+                "100GB SSD Storage",
+                "Unlimited Bandwidth",
+                "Free SSL Certificate",
+                "24/7 Support",
+              ],
+            },
+            {
+              title: "VPS Hosting",
+              price: "₹900",
+              featured: true,
+              features: [
+                "4GB RAM",
+                "2 vCPU Cores",
+                "100GB NVMe Storage",
+                "Root Access",
+              ],
+            },
+            {
+              title: "Dedicated Server",
+              price: "₹3500",
+              features: [
+                "32GB RAM",
+                "8 CPU Cores",
+                "1TB SSD Storage",
+                "DDoS Protection",
+              ],
+            },
+          ].map((plan, index) => (
+            <motion.div
+              key={index}
+              className={`pricing-card ${plan.featured ? "featured" : ""}`}
+              variants={fadeUp}
+              whileHover={{ scale: 1.05 }}
+            >
+              {plan.featured && (
+                <div className="popular-badge">MOST POPULAR</div>
+              )}
+              <h3>{plan.title}</h3>
+              <div className="price">
+                {plan.price}
+                <span>/mo</span>
+              </div>
+              <ul>
+                {plan.features.map((f, i) => (
+                  <li key={i}>✓ {f}</li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Features */}
+        <motion.div
+          className="hosting-features"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
           <h2>Why Choose Our Hosting?</h2>
-          <div className="features-grid">
-            <div className="feature">
-              <div className="icon">⚡</div>
-              <h4>99.9% Uptime</h4>
-            </div>
-            <div className="feature">
-              <div className="icon">🛡️</div>
-              <h4>Free Backups</h4>
-            </div>
-            <div className="feature">
-              <div className="icon">🌐</div>
-              <h4>Global CDN</h4>
-            </div>
-          </div>
-        </div>
 
-        <button onClick={redirectToContact}>Get Started Now</button>
-      </main>
+          <div className="features-grid">
+            {[
+              { icon: "⚡", title: "99.9% Uptime" },
+              { icon: "🛡️", title: "Free Backups" },
+              { icon: "🌐", title: "Global CDN" },
+            ].map((feature, i) => (
+              <motion.div
+                key={i}
+                className="feature"
+                variants={fadeUp}
+                whileHover={{ y: -5 }}
+              >
+                <div className="icon">{feature.icon}</div>
+                <h4>{feature.title}</h4>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.button
+          onClick={redirectToContact}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Get Started Now
+        </motion.button>
+      </motion.main>
+
       <Footer />
     </div>
   );

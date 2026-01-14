@@ -2,6 +2,12 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "../styles/WebsiteDesign.css";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const WebsiteDesign = () => {
   const redirectToContact = () => {
@@ -11,50 +17,104 @@ const WebsiteDesign = () => {
   return (
     <div className="website-design-container">
       <Navbar />
-      <main>
+
+      <motion.main
+        initial="hidden"
+        animate="visible"
+        variants={fadeUp}
+        transition={{ duration: 0.6 }}
+      >
         {/* Hero Section */}
-        <section className="design-hero">
-          <h1>Website Design That Converts</h1>
-          <p>
-            We create visually stunning, user-friendly websites that align with 
+        <motion.section className="design-hero" variants={fadeUp}>
+          <motion.h1 variants={fadeUp}>
+            Website Design That Converts
+          </motion.h1>
+
+          <motion.p variants={fadeUp}>
+            We create visually stunning, user-friendly websites that align with
             your brand and drive business growth.
-          </p>
-          <button onClick={redirectToContact}>Get Your Free Design Consultation</button>
-        </section>
+          </motion.p>
+
+          <motion.button
+            onClick={redirectToContact}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Get Your Free Design Consultation
+          </motion.button>
+        </motion.section>
 
         {/* Process Section */}
-        <section className="design-process">
-          <h2>Our Design Process</h2>
+        <motion.section
+          className="design-process"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.15 } },
+          }}
+        >
+          <motion.h2 variants={fadeUp}>Our Design Process</motion.h2>
+
           <div className="process-steps">
-            <div className="step">
-              <div className="step-number">1</div>
-              <h3>Discovery</h3>
-              <p>Research your business, audience, and competitors</p>
-            </div>
-            <div className="step">
-              <div className="step-number">2</div>
-              <h3>Wireframing</h3>
-              <p>Create structural blueprints for key pages</p>
-            </div>
-            <div className="step">
-              <div className="step-number">3</div>
-              <h3>Visual Design</h3>
-              <p>Develop high-fidelity mockups with your branding</p>
-            </div>
-            <div className="step">
-              <div className="step-number">4</div>
-              <h3>Development Ready</h3>
-              <p>Deliver assets and specifications for developers</p>
-            </div>
+            {[
+              {
+                step: "1",
+                title: "Discovery",
+                desc: "Research your business, audience, and competitors",
+              },
+              {
+                step: "2",
+                title: "Wireframing",
+                desc: "Create structural blueprints for key pages",
+              },
+              {
+                step: "3",
+                title: "Visual Design",
+                desc: "Develop high-fidelity mockups with your branding",
+              },
+              {
+                step: "4",
+                title: "Development Ready",
+                desc: "Deliver assets and specs for developers",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="step"
+                variants={fadeUp}
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="step-number">{item.step}</div>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* CTA Section */}
-        <section className="design-cta">
-          <h2>Ready to Elevate Your Online Presence?</h2>
-          <button onClick={redirectToContact}>Start Your Project Today</button>
-        </section>
-      </main>
+        <motion.section
+          className="design-cta"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <motion.h2 variants={fadeUp}>
+            Ready to Elevate Your Online Presence?
+          </motion.h2>
+
+          <motion.button
+            onClick={redirectToContact}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Start Your Project Today
+          </motion.button>
+        </motion.section>
+      </motion.main>
+
       <Footer />
     </div>
   );
