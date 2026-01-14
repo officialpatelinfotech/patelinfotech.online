@@ -1,66 +1,90 @@
+// Policies.jsx
 import React from "react";
-import "../styles/Policies.css"; // Create a CSS file for styling
-import Navbar from "./Navbar"; // Import the Navbar component
-import Footer from "./Footer"; // Import the Footer component
+import { motion } from "framer-motion";
+import "../styles/Policies.css";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const Policies = () => {
   return (
     <div style={{ backgroundColor: "#1e1e2f" }}>
-      <Navbar /> {/* Add the Navbar component */}
-      <header className="policies-header">
+      <Navbar />
+
+      {/* Header */}
+      <motion.header
+        className="policies-header"
+        initial="hidden"
+        animate="visible"
+        variants={fadeUp}
+        transition={{ duration: 0.6 }}
+      >
         <h1>Privacy Policy</h1>
         <p>Protecting your data is our priority</p>
-      </header>
+      </motion.header>
 
-      <div className="policies-container">
-        <p>
+      {/* Content */}
+      <motion.div
+        className="policies-container"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        transition={{ duration: 0.6, staggerChildren: 0.1 }}
+      >
+        <motion.p variants={fadeUp}>
           At Patel Infotech Services, we respect your privacy and are committed
           to protecting your personal information. This Privacy Policy outlines
-          how we collect, use, and safeguard your data when you interact with
-          our website and services.
-        </p>
+          how we collect, use, and safeguard your data.
+        </motion.p>
 
-        <h2>1. Information We Collect</h2>
-        <p>
-          We may collect personal information that you provide voluntarily such
-          as your name, email address, phone number, and any messages or
-          inquiries submitted through our contact forms.
-        </p>
+        <motion.h2 variants={fadeUp}>1. Information We Collect</motion.h2>
+        <motion.p variants={fadeUp}>
+          We collect information such as name, email, phone number, and messages
+          submitted through our forms.
+        </motion.p>
 
-        <h2>2. How We Use Your Information</h2>
-        <p>Your information is used to:</p>
-        <ul>
-          <li>Respond to your inquiries and provide support</li>
-          <li>Improve our services and website experience</li>
-          <li>Send updates or promotional material (only with your consent)</li>
-        </ul>
+        <motion.h2 variants={fadeUp}>2. How We Use Your Information</motion.h2>
+        <motion.ul variants={fadeUp}>
+          <li>Respond to inquiries</li>
+          <li>Improve services</li>
+          <li>Send updates (with consent)</li>
+        </motion.ul>
 
-        <h2>3. Data Security</h2>
-        <p>
-          We implement industry-standard security measures to protect your data
-          from unauthorized access, disclosure, or misuse.
-        </p>
+        <motion.h2 variants={fadeUp}>3. Data Security</motion.h2>
+        <motion.p variants={fadeUp}>
+          Industry-standard security measures are used to protect your data.
+        </motion.p>
 
-        <h2>4. Third-Party Services</h2>
-        <p>
-          We may use trusted third-party tools (like analytics or contact forms)
-          that may collect anonymized data to help us understand usage trends.
-        </p>
+        <motion.h2 variants={fadeUp}>4. Third-Party Services</motion.h2>
+        <motion.p variants={fadeUp}>
+          Trusted third-party tools may be used for analytics and forms.
+        </motion.p>
 
-        <h2>5. Your Choices</h2>
-        <p>
-          You can opt-out of marketing emails at any time, and you may contact
-          us to request updates or deletion of your personal data.
-        </p>
+        <motion.h2 variants={fadeUp}>5. Your Choices</motion.h2>
+        <motion.p variants={fadeUp}>
+          You may opt-out of emails or request data deletion anytime.
+        </motion.p>
 
-        <h2>6. Contact Us</h2>
-        <p>
-          If you have any questions or concerns regarding this policy, please
-          email us at: <strong>support@patelinfotech.online</strong>
-        </p>
-      </div>
+        <motion.h2 variants={fadeUp}>6. Contact Us</motion.h2>
+        <motion.p variants={fadeUp}>
+          Email:{" "}
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@patelinfotech.online&su=Inquiry&body=Hello%20Patel%20Infotech"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Send email via Gmail"
+          >
+            contact@patelinfotech.online
+          </a>
+        </motion.p>
+      </motion.div>
 
-      <Footer /> {/* Add the Footer component */}
+      <Footer />
     </div>
   );
 };
