@@ -1,0 +1,139 @@
+/* ----------------- General Page Styles ----------------- */
+.our-clients-main {
+  padding: 40px 20px;              /* moved content upwards */
+  text-align: center;
+  background: #1e1e2f;
+  color: #ffffff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ----------------- Heading & Subtitle ----------------- */
+.our-clients-main h1 {
+  font-size: 2.2rem;               /* slightly smaller & clean */
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #7a9ed9;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #d1e8e2;
+  margin-bottom: 25px;             /* pulled closer to cards */
+}
+
+/* ----------------- Sliding Grid Wrapper ----------------- */
+.clients-grid-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* ----------------- Sliding Row ----------------- */
+.clients-grid {
+  display: flex;
+  gap: 40px;
+  animation: slide 18s linear infinite;
+}
+
+@keyframes slide {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ----------------- Client Card (BIG RECTANGLE) ----------------- */
+.client-card {
+  min-width: 500px;                /* increased size */
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+  transition: transform 0.45s ease, box-shadow 0.45s ease;
+  cursor: pointer;
+}
+
+.client-card:hover {
+  transform: scale(1.06) translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.65);
+}
+
+/* ----------------- Overlay ----------------- */
+.client-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.25)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  gap: 6px;
+}
+
+.client-card:hover .client-overlay {
+  opacity: 1;
+}
+
+/* ----------------- Card Text ----------------- */
+.client-overlay h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.tag {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: #7a9ed9;
+  color: #1e1e2f;
+  transition: transform 0.3s ease;
+}
+
+.client-card:hover .tag {
+  transform: translateY(-4px);
+}
+
+/* ----------------- Responsive (Mobile) ----------------- */
+@media (max-width: 768px) {
+  .our-clients-main h1 {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .clients-grid {
+    gap: 20px;
+    animation: slide 10s linear infinite;  /* faster on mobile */
+  }
+
+  .client-card {
+    min-width: 320px;              /* still big on mobile */
+    height: 190px;
+  }
+
+  .client-overlay h2 {
+    font-size: 1rem;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
+}

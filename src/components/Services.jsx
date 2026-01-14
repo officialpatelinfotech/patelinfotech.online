@@ -1,8 +1,9 @@
 import React from "react";
-import Navbar from "./Navbar"; // Import the Navbar component
-import Footer from "./Footer"; // Import the Footer component
-import "../styles/Services.css"; // Import the CSS file for styles
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import "../styles/Services.css";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Services = () => {
   const redirectToContact = () => {
@@ -11,64 +12,96 @@ const Services = () => {
 
   return (
     <div className="services-container">
-      <Navbar /> {/* Add the Navbar component */}
-      <main className="services-main">
+      <Navbar />
+
+      {/* Page animation */}
+      <motion.main
+        className="services-main"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <h1>Our Services</h1>
         <p>
           Empowering your business with innovative solutions tailored to your
           needs.
         </p>
-        <div className="services-grid">
-          <div className="service-card">
-            <h2>
-              <Link to="/website-development">Web Development</Link>
-            </h2>
-            <p>
-              Custom, scalable web apps built with modern frameworks tailored to
-              your business needs.
-            </p>
-          </div>
-          <div className="service-card">
-            <h2><Link to="/website-design">Website Design</Link></h2>
-            <p>
-              Responsive and engaging websites that showcase your brand and work
-              flawlessly across devices.
-            </p>
-          </div>
-          <div className="service-card">
-            <h2><Link to="/ui-ux-design">UI/UX Design</Link></h2>
-            <p>
-              We craft intuitive user experiences with sleek, modern design
-              interfaces your users will love.
-            </p>
-          </div>
-          <div className="service-card">
-            <h2><Link to="/seo">SEO Optimization</Link></h2>
-            <p>
-              Boost your visibility on search engines with our on-page and
-              technical SEO strategies.
-            </p>
-          </div>
-          <div className="service-card">
-            <h2><Link to="/website-maintenance">Website Maintenance</Link></h2>
-            <p>
-              Ongoing updates, backups, security checks, and performance
-              monitoring — hassle-free.
-            </p>
-          </div>
-          <div className="service-card">
-            <h2><Link to="/hosting">Hosting & Deployment</Link></h2>
-            <p>
-              Reliable hosting solutions with easy deployment and domain
-              integration.
-            </p>
-          </div>
-        </div>
-        <button className="cta-button" onClick={redirectToContact}>
+
+        {/* Grid with stagger effect */}
+        <motion.div
+          className="services-grid"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            show: {
+              transition: { staggerChildren: 0.15 }
+            }
+          }}
+        >
+          {[
+            {
+              title: "Web Development",
+              link: "/website-development",
+              desc: "Custom, scalable web apps built with modern frameworks tailored to your business needs."
+            },
+            {
+              title: "Website Design",
+              link: "/website-design",
+              desc: "Responsive and engaging websites that showcase your brand across devices."
+            },
+            {
+              title: "UI/UX Design",
+              link: "/ui-ux-design",
+              desc: "Intuitive user experiences with sleek, modern interfaces."
+            },
+            {
+              title: "SEO Optimization",
+              link: "/seo",
+              desc: "Boost your visibility with on-page and technical SEO strategies."
+            },
+            {
+              title: "Website Maintenance",
+              link: "/website-maintenance",
+              desc: "Updates, backups, security checks, and performance monitoring."
+            },
+            {
+              title: "Hosting & Deployment",
+              link: "/hosting",
+              desc: "Reliable hosting solutions with smooth deployment."
+            }
+          ].map((service, index) => (
+            <motion.div
+              key={index}
+              className="service-card"
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                show: { opacity: 1, y: 0 }
+              }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.4 }}
+            >
+              <h2>
+                <Link to={service.link}>{service.title}</Link>
+              </h2>
+              <p>{service.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* CTA button animation */}
+        <motion.button
+          className="cta-button"
+          onClick={redirectToContact}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
           Get in Touch
-        </button>
-      </main>
-      <Footer /> {/* Add the Footer component */}
+        </motion.button>
+      </motion.main>
+
+      <Footer />
     </div>
   );
 };
