@@ -18,6 +18,9 @@ import DeployGuide from "./components/DeployGuide";
 import Projects from "./components/Project";
 import InteractiveTesseract from "./components/InteractiveTesseract";
 import SolarSystem from "./components/SolarSystem";
+import Location from "./components/Location";
+import OurClients from "./components/OurClients";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -39,6 +42,9 @@ root.render(
       <Route path="/projects" element={<Projects />} />
       <Route path="/projects/react.js/interactive-tesseract" element={<InteractiveTesseract />} />
       <Route path="/projects/react.js/solar-system" element={<SolarSystem />} />
+      <Route path="/location" element={<Location />} />
+      <Route path="/our-clients" element={<OurClients />} />
+
     </Routes>
   </Router>
 );

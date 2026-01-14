@@ -2,6 +2,12 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "../styles/WebsiteMaintenance.css";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const WebsiteMaintenance = () => {
   const redirectToContact = () => {
@@ -11,44 +17,95 @@ const WebsiteMaintenance = () => {
   return (
     <div className="maintenance-container">
       <Navbar />
-      <main>
+
+      <motion.main
+        initial="hidden"
+        animate="visible"
+        variants={fadeUp}
+        transition={{ duration: 0.6 }}
+      >
         {/* Hero Section */}
-        <section className="maintenance-hero">
-          <h1>Website Maintenance Plans</h1>
-          <p className="subtitle">
-            Ongoing updates, backups, security checks, and performance monitoring — all handled for you.
-          </p>
-          <div className="guarantee-badge">
+        <motion.section className="maintenance-hero" variants={fadeUp}>
+          <motion.h1 variants={fadeUp}>
+            Website Maintenance Plans
+          </motion.h1>
+
+          <motion.p className="subtitle" variants={fadeUp}>
+            Ongoing updates, backups, security checks, and performance monitoring —
+            all handled for you.
+          </motion.p>
+
+          <motion.div
+            className="guarantee-badge"
+            variants={fadeUp}
+            whileHover={{ scale: 1.05 }}
+          >
             <span>✓ 99.9% Uptime Guarantee</span>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
         {/* Value Proposition */}
-        <section className="value-props">
-          <div className="prop-card">
-            <div className="icon">🛡️</div>
-            <h3>Security First</h3>
-            <p>Regular vulnerability scans and malware protection</p>
-          </div>
-          <div className="prop-card">
-            <div className="icon">⚡</div>
-            <h3>Peak Performance</h3>
-            <p>Monthly speed optimizations and broken link checks</p>
-          </div>
-          <div className="prop-card">
-            <div className="icon">📅</div>
-            <h3>Update Calendar</h3>
-            <p>Scheduled maintenance during low-traffic periods</p>
-          </div>
-        </section>
-
+        <motion.section
+          className="value-props"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: { transition: { staggerChildren: 0.15 } },
+          }}
+        >
+          {[
+            {
+              icon: "🛡️",
+              title: "Security First",
+              desc: "Regular vulnerability scans and malware protection",
+            },
+            {
+              icon: "⚡",
+              title: "Peak Performance",
+              desc: "Monthly speed optimizations and broken link checks",
+            },
+            {
+              icon: "📅",
+              title: "Update Calendar",
+              desc: "Scheduled maintenance during low-traffic periods",
+            },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className="prop-card"
+              variants={fadeUp}
+              whileHover={{ scale: 1.06 }}
+            >
+              <div className="icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </motion.div>
+          ))}
+        </motion.section>
 
         {/* CTA */}
-        <section className="maintenance-cta">
-          <h2>Focus on Your Business, We'll Handle the Tech</h2>
-          <button onClick={redirectToContact}>Secure Your Website Now</button>
-        </section>
-      </main>
+        <motion.section
+          className="maintenance-cta"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <motion.h2 variants={fadeUp}>
+            Focus on Your Business, We'll Handle the Tech
+          </motion.h2>
+
+          <motion.button
+            onClick={redirectToContact}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Secure Your Website Now
+          </motion.button>
+        </motion.section>
+      </motion.main>
+
       <Footer />
     </div>
   );
