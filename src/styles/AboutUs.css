@@ -1,72 +1,190 @@
-/* General Styles */
-body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: #f9f9f9;
-  color: #333;
+.about-page-container {
+  min-height: 100vh;
+  padding-top: 100px;
+  background-color: #070707;
 }
 
-/* Header Section */
-.about-header {
-  background: #1e1e2f;
-  color: white;
+.about-main-content {
+  padding: 6rem 0 10rem;
+  position: relative;
+  z-index: 1;
+  background-color: #080808;
+  border-top: 1px solid var(--glass-border);
+}
+
+.about-hero-header {
   text-align: center;
-  padding: 50px 20px;
-}
-
-.about-header h1 {
-  margin: 0;
-  color:#7a9ed9;
-}
-
-.about-header p {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  color: white;
-}
-
-/* About Content Section */
-.about-content {
   max-width: 900px;
-  margin: 40px auto;
-  padding: 20px 30px;
-  background: #3a3a4e;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  margin: 0 auto 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.service-badge-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+}
+
+.service-badge-container .dot {
+  width: 7px;
+  height: 7px;
+  background: var(--accent-blue);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--accent-blue);
+}
+
+.badge-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.about-hero-header h1 {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.about-hero-header h1 .font-italic {
+  font-family: 'Playfair Display', serif !important;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.about-hero-header p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.about-section-card {
+  padding: 3.5rem;
+  border-radius: 24px;
+  transition: var(--transition-smooth);
+}
+
+.about-section-card:hover {
+  border-color: var(--accent-blue) !important;
+}
+
+.about-section-card h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.about-section-card p {
+  color: var(--text-muted);
   line-height: 1.7;
+  font-size: 1.1rem;
 }
 
-.about-content h2 {
-  color: white;
-  margin-top: 0;
+.about-section-card strong {
+  color: #fff;
+  font-weight: 600;
 }
 
-.about-content p {
-  margin: 15px 0;
+.values-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
-.about-content ul {
-  margin: 15px 0;
-  padding-left: 20px;
+.values-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: var(--text-muted);
+  font-size: 1.05rem;
 }
 
-.about-content ul li {
-  color: #c0c0e0;
-  margin-bottom: 10px;
-  list-style-type: disc;
+.accent-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-blue);
+  border-radius: 50%;
+  margin-top: 0.6rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px var(--accent-blue);
 }
 
-@media screen and (max-width: 768px) {
-  .about-content {
-    padding: 15px;
-    margin: 0px 25px;
+@media (max-width: 992px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-main-content {
+    padding: 4rem 0 6rem;
   }
 
-  .about-header h1 {
-    font-size: 2rem;
+  .about-hero-header {
+    margin-bottom: 3.5rem;
   }
 
-  .about-header p {
+  .about-hero-header h1 {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-hero-header p {
+    font-size: 1.1rem;
+  }
+
+  .about-section-card {
+    padding: 2.5rem 2rem;
+    border-radius: 24px;
+  }
+
+  .about-section-card h2 {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  .about-section-card p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .about-section-card {
+    padding: 2rem 1.2rem;
+  }
+
+  .about-section-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-section-card p {
     font-size: 1rem;
   }
 }

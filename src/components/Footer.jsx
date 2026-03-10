@@ -1,97 +1,68 @@
 import React from "react";
-import { motion } from "framer-motion";
-import "../styles/Footer.css";
-import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+import { FaInstagram, FaLinkedin, FaFacebook } from "react-icons/fa";
+import "../styles/Footer.css";
 
 const Footer = () => {
   return (
-    <motion.footer
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      variants={fadeUp}
-    >
-      <motion.div className="footer-columns" variants={fadeUp}>
-        {/* Services */}
-        <motion.div className="footer-column" variants={fadeUp}>
-          <h4>Services</h4>
-          <ul>
-            <li><Link to="/website-development">Website Development</Link></li>
-            <li><Link to="/website-design">Website Design</Link></li>
-            <li><Link to="/ui-ux-design">UI/UX Design</Link></li>
-            <li><Link to="/seo">SEO Optimization</Link></li>
-            <li><Link to="/hosting">Hosting</Link></li>
-            <li><Link to="/website-maintenance">Website Maintenance</Link></li>
-          </ul>
-        </motion.div>
-
-        {/* Resources */}
-       {/* Resources */}
-<motion.div className="footer-column" variants={fadeUp}>
-  <h4>Resources</h4>
-  <ul>
-    <li><Link to="/projects">Projects</Link></li>
-    <li><Link to="/about-us">Our Story</Link></li>
-    <li><Link to="/contact-us">Contact Us</Link></li>
-    <li><Link to="/sitemap">Sitemap</Link></li>
-    <li><Link to="/our-clients">Our Clients</Link></li>
-  </ul>
-</motion.div>
-
-
-        {/* Social */}
-        <motion.div className="footer-column" variants={fadeUp}>
-          <h4>Follow Us</h4>
-          <div className="social-icons">
-            <motion.a
-              href="https://instagram.com/officialpatelinfotech"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <FaInstagram className="icon" />
-            </motion.a>
-
-            <motion.a
-              href="https://www.linkedin.com/company/patel-infotech-services"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <FaLinkedin className="icon" />
-            </motion.a>
-
-            <motion.a
-              href="https://www.facebook.com/people/Patel-Infotech-Services/61571309896849/"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <FaFacebook className="icon" />
-            </motion.a>
+    <footer className="footer-container">
+      <div className="container">
+        <div className="footer-top">
+          <div className="footer-brand-section">
+            <div className="navbar-logo">
+              PATEL<span>INFOTECH</span>
+            </div>
+            <p className="footer-tagline">
+              Delivering high-end digital solutions with <br />
+              precision and innovation since 2025.
+            </p>
+            <div className="footer-socials">
+              <a href="https://instagram.com/officialpatelinfotech" target="_blank" rel="noreferrer"><FaInstagram /></a>
+              <a href="https://www.linkedin.com/company/patel-infotech-services" target="_blank" rel="noreferrer"><FaLinkedin /></a>
+              <a href="https://www.facebook.com/people/Patel-Infotech-Services/61571309896849/" target="_blank" rel="noreferrer"><FaFacebook /></a>
+            </div>
           </div>
-        </motion.div>
-      </motion.div>
 
-      <motion.div className="footer-bottom" variants={fadeUp}>
-        <p>
-          &copy; {new Date().getFullYear()} Patel Infotech Services. All rights reserved.
-        </p>
-        <ul className="footer-links">
-          <li><Link to="/policies">Privacy Policy</Link></li>
-        </ul>
-      </motion.div>
-    </motion.footer>
+          <div className="footer-links-grid">
+            <div className="footer-link-col">
+              <h4>Services</h4>
+              <ul>
+                <li><Link to="/website-development">Web Development</Link></li>
+                <li><Link to="/website-design">Website Design</Link></li>
+                <li><Link to="/ui-ux-design">UI/UX Design</Link></li>
+                <li><Link to="/seo">SEO Optimization</Link></li>
+                <li><Link to="/website-maintenance">Website Maintenance</Link></li>
+                <li><Link to="/hosting">Hosting & Deployment</Link></li>
+              </ul>
+            </div>
+            <div className="footer-link-col">
+              <h4>Company</h4>
+              <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/services">Services</Link></li>
+                <li><Link to="/about-us">About Us</Link></li>
+                <li><Link to="/our-clients">Our Clients</Link></li>
+                <li><Link to="/contact-us">Contact Us</Link></li>
+              </ul>
+            </div>
+            <div className="footer-link-col">
+              <h4>Legal</h4>
+              <ul>
+                <li><Link to="/policies">Policies</Link></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-bottom-bar">
+          <p>&copy; {new Date().getFullYear()} Patel Infotech Services. All rights reserved.</p>
+          <div className="footer-bottom-links">
+            <Link to="/sitemap">Sitemap</Link>
+            <Link to="/location">Location</Link>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
 };
 

@@ -20,11 +20,13 @@ import InteractiveTesseract from "./components/InteractiveTesseract";
 import SolarSystem from "./components/SolarSystem";
 import Location from "./components/Location";
 import OurClients from "./components/OurClients";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
+    <ScrollToTop />
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/services" element={<Services />} />

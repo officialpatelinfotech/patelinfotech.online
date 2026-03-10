@@ -1,57 +1,15 @@
-*, *::before, *::after {
-  box-sizing: border-box;
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+main {
+  flex: 1;
+}
+
+/* Global Reset overrides if any */
 body {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: #2c2f48; /* Dark Blue */
-  color: #ffffff; /* White */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-a {
-  color: #7a9ed9; /* Light Blue */
-  text-decoration: none;
-}
-
-a:hover {
-  color: #4b47c0; /* Purple */
-  text-decoration: underline;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-  body {
-    font-size: 90%; /* Reduce font size for smaller screens */
-    box-sizing: border-box;
-  }
-
-  nav {
-    flex-wrap: wrap; /* Allow navigation links to wrap */
-    justify-content: space-around; /* Adjust alignment */
-  }
-
-  nav a {
-    margin: 10px 5px; /* Reduce margin for links */
-    font-size: 0.9rem; /* Adjust font size */
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    font-size: 80%; /* Further reduce font size for very small screens */
-  }
-
-  nav a {
-    font-size: 0.8rem; /* Smaller font size for links */
-  }
+  padding: 0;
 }

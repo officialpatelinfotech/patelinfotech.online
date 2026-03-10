@@ -1,88 +1,80 @@
-// Policies.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import "../styles/Policies.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import GlobalBackground from "./GlobalBackground";
+import "../styles/Policies.css";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
 const Policies = () => {
   return (
-    <div style={{ backgroundColor: "#1e1e2f" }}>
+    <div className="policies-page-container">
+      <GlobalBackground />
       <Navbar />
 
-      {/* Header */}
-      <motion.header
-        className="policies-header"
+      <motion.main
+        className="policies-main-content"
         initial="hidden"
         animate="visible"
-        variants={fadeUp}
-        transition={{ duration: 0.6 }}
       >
-        <h1>Privacy Policy</h1>
-        <p>Protecting your data is our priority</p>
-      </motion.header>
+        <div className="container">
+          <motion.header className="policies-hero-header" variants={fadeUp}>
+            <div className="service-badge-container">
+              <span className="dot"></span>
+              <span className="badge-text">Legal & Privacy</span>
+            </div>
+            <h1>Your <span className="font-italic">Data</span> Security Matters</h1>
+            <p>At Patel Infotech Services, transparency and trust are at the core of our operations.</p>
+          </motion.header>
 
-      {/* Content */}
-      <motion.div
-        className="policies-container"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        transition={{ duration: 0.6, staggerChildren: 0.1 }}
-      >
-        <motion.p variants={fadeUp}>
-          At Patel Infotech Services, we respect your privacy and are committed
-          to protecting your personal information. This Privacy Policy outlines
-          how we collect, use, and safeguard your data.
-        </motion.p>
+          <motion.div className="policies-content-card glass-morphism" variants={fadeUp}>
+            <div className="policy-intro">
+              <p>
+                We respect your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data with the highest industry standards.
+              </p>
+            </div>
 
-        <motion.h2 variants={fadeUp}>1. Information We Collect</motion.h2>
-        <motion.p variants={fadeUp}>
-          We collect information such as name, email, phone number, and messages
-          submitted through our forms.
-        </motion.p>
+            <section className="policy-section">
+              <h2>1. Information Collection</h2>
+              <p>We collect essential information such as name, email address, and project requirements submitted through our digital touchpoints to provide a personalized service experience.</p>
+            </section>
 
-        <motion.h2 variants={fadeUp}>2. How We Use Your Information</motion.h2>
-        <motion.ul variants={fadeUp}>
-          <li>Respond to inquiries</li>
-          <li>Improve services</li>
-          <li>Send updates (with consent)</li>
-        </motion.ul>
+            <section className="policy-section">
+              <h2>2. Usage of Data</h2>
+              <ul className="policy-list">
+                <li>Streamlining communication for ongoing projects.</li>
+                <li>Enhancing our service delivery through internal analytics.</li>
+                <li>Providing security updates and critical system notifications.</li>
+              </ul>
+            </section>
 
-        <motion.h2 variants={fadeUp}>3. Data Security</motion.h2>
-        <motion.p variants={fadeUp}>
-          Industry-standard security measures are used to protect your data.
-        </motion.p>
+            <section className="policy-section">
+              <h2>3. Strategic Data Security</h2>
+              <p>We employ enterprise-grade encryption and secure server protocols to ensure your intellectual property and personal details remain confidential and protected from unauthorized access.</p>
+            </section>
 
-        <motion.h2 variants={fadeUp}>4. Third-Party Services</motion.h2>
-        <motion.p variants={fadeUp}>
-          Trusted third-party tools may be used for analytics and forms.
-        </motion.p>
+            <section className="policy-section">
+              <h2>4. Collaborative Partners</h2>
+              <p>We only share data with trusted third-party cloud infrastructure providers (like AWS or Google Cloud) purely for hosting and performance optimization purposes under strict NDAs.</p>
+            </section>
 
-        <motion.h2 variants={fadeUp}>5. Your Choices</motion.h2>
-        <motion.p variants={fadeUp}>
-          You may opt-out of emails or request data deletion anytime.
-        </motion.p>
-
-        <motion.h2 variants={fadeUp}>6. Contact Us</motion.h2>
-        <motion.p variants={fadeUp}>
-          Email:{" "}
-          <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@patelinfotech.online&su=Inquiry&body=Hello%20Patel%20Infotech"
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Send email via Gmail"
-          >
-            contact@patelinfotech.online
-          </a>
-        </motion.p>
-      </motion.div>
+            <section className="policy-section">
+              <h2>5. Inquiries & Contact</h2>
+              <p>If you have any questions regarding our security protocols, please reach out to our legal department:</p>
+              <a
+                href="mailto:contact@patelinfotech.online"
+                className="policy-contact-link"
+              >
+                contact@patelinfotech.online
+              </a>
+            </section>
+          </motion.div>
+        </div>
+      </motion.main>
 
       <Footer />
     </div>

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import "../styles/ContactUs.css";
-import Footer from "./Footer";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
+import GlobalBackground from "./GlobalBackground";
+import "../styles/ContactUs.css";
 import ContactUsImage from "../assets/images/contactus-right-side.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
 const ContactUs = () => {
@@ -26,20 +27,19 @@ const ContactUs = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // ✅ EMAILJS
   const handleSubmit = (e) => {
     e.preventDefault();
 
     emailjs
       .send(
-        "service_wvjla62",         // 🔹 Service ID
-        "template_t1a3nxb",        // 🔹 Template ID
+        "service_wvjla62",
+        "template_t1a3nxb",
         {
           from_name: formData.name,
           reply_to: formData.email,
           message: formData.message,
         },
-        "VzFpMF75ilPHVuNWs"        // 🔹 Public Key
+        "VzFpMF75ilPHVuNWs"
       )
       .then(
         () => {
@@ -55,119 +55,150 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="contactus-container">
+    <div className="contact-page-container">
+      <GlobalBackground />
       <Navbar />
 
       <motion.main
-        className="contactus-main"
+        className="contact-main-content"
         initial="hidden"
         animate="visible"
-        variants={fadeUp}
-        transition={{ duration: 0.7 }}
       >
-        <motion.h1 variants={fadeUp}>Contact Us</motion.h1>
-        <motion.p variants={fadeUp}>
-          We’d love to hear from you! Let’s get in touch.
-        </motion.p>
+        <div className="container">
+          <motion.header className="contact-hero-header" variants={fadeUp}>
+            <div className="service-badge-container">
+              <span className="dot"></span>
+              <span className="badge-text">Get In Touch</span>
+            </div>
+            <h1>Let's <span className="font-italic">Connect</span></h1>
+            <p>We’d love to hear from you! Reach out for inquiries, collaborations, or just to say hello.</p>
+          </motion.header>
 
-        <motion.div
-          className="contactus-grid"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          transition={{ duration: 0.6 }}
-        >
-          {/* LEFT */}
-          <motion.div className="contact-info" variants={fadeUp}>
-            <h2>Get in Touch</h2>
+          <div className="contact-grid">
+            {/* Left Side: Info */}
+            <motion.div
+              className="contact-info-panel glass-morphism"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <div className="info-header">
+                <h2>Contact Information</h2>
+                <p>Fill out the form or reach us via our details below.</p>
+              </div>
 
-            <p>📞 Phone: <a href="tel:+919309950513">+91 9309950513</a></p>
+              <div className="info-details">
+                <div className="info-item">
+                  <span className="info-icon">📞</span>
+                  <div className="info-text">
+                    <label>Phone</label>
+                    <a href="tel:+919309950513">+91 9309950513</a>
+                  </div>
+                </div>
 
-            <p>
-              📧 Email:{" "}
-              <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@patelinfotech.online&su=Inquiry&body=Hello%20Patel%20Infotech"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Send email via Gmail"
-              >
-                contact@patelinfotech.online
-              </a>
-            </p>
+                <div className="info-item">
+                  <span className="info-icon">📧</span>
+                  <div className="info-text">
+                    <label>Email</label>
+                    <a
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=contact@patelinfotech.online"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      contact@patelinfotech.online
+                    </a>
+                  </div>
+                </div>
 
-            <p>
-              📍 Address:<br />
-              Tipsy, Topsy Co. Op. Society,<br />
-              Flat 405, A Wing,<br />
-              Sambhaji Chowk,<br />
-              Ulhasnagar, Maharashtra 421004
-            </p>
+                <div className="info-item">
+                  <span className="info-icon">📍</span>
+                  <div className="info-text">
+                    <label>Address</label>
+                    <p>
+                      Tipsy, Topsy Co. Op. Society,<br />
+                      Flat 405, A Wing, Sambhaji Chowk,<br />
+                      Ulhasnagar, Maharashtra 421004
+                    </p>
+                  </div>
+                </div>
+              </div>
 
-            <motion.img
-              src={ContactUsImage}
-              alt="Contact Patel Infotech"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-            />
-          </motion.div>
+              <div className="info-visual">
+                <img src={ContactUsImage} alt="Contact Patel Infotech" />
+              </div>
+            </motion.div>
 
-          {/* RIGHT */}
-          <motion.div className="contact-form" variants={fadeUp}>
-            <h2>Send us a message</h2>
+            {/* Right Side: Form */}
+            <motion.div
+              className="contact-form-panel glass-morphism"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label>Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="John Doe"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-            <form onSubmit={handleSubmit}>
-              <label>Your Name *</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
+                <div className="form-group">
+                  <label>Email Address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="john@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-              <label>Email Address *</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
+                <div className="form-group">
+                  <label>Your Message</label>
+                  <textarea
+                    name="message"
+                    rows="5"
+                    placeholder="How can we help you?"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-              <label>Your Message *</label>
-              <textarea
-                name="message"
-                rows="6"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              />
+                <motion.button
+                  type="submit"
+                  className="btn-primary"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Send Message
+                </motion.button>
+              </form>
 
-              <motion.button
-                type="submit"
-                className="contactus-cta-button"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Send Message
-              </motion.button>
-            </form>
+              {success && (
+                <motion.div className="form-status success" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                  ✅ Message sent successfully!
+                </motion.div>
+              )}
 
-            {success && (
-              <motion.div className="message success" animate={{ opacity: 1 }}>
-                ✅ Message sent successfully!
-              </motion.div>
-            )}
-
-            {error && (
-              <motion.div className="message error" animate={{ opacity: 1 }}>
-                ❌ Failed to send message. Try again.
-              </motion.div>
-            )}
-          </motion.div>
-        </motion.div>
+              {error && (
+                <motion.div className="form-status error" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                  ❌ Failed to send. Please try again.
+                </motion.div>
+              )}
+            </motion.div>
+          </div>
+        </div>
       </motion.main>
 
       <Footer />
