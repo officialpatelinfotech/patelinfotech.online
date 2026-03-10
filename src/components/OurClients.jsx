@@ -1,10 +1,10 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import GlobalBackground from "./GlobalBackground";
 import "../styles/OurClients.css";
 import { motion } from "framer-motion";
 
-// Client data
 const clients = [
   { name: "Kaushalya Art Jewellery", link: "https://kaushalyaartjewellery.com", country: "India", img: "/assets/clients/kaushalya.png" },
   { name: "Crown & Halo", link: "https://crownandhalo.co.uk/", country: "United Kingdom", img: "/assets/clients/crownhalo.png" },
@@ -16,63 +16,60 @@ const clients = [
   { name: "Verity Aluminium System", link: "https://verityalu.com/", country: "India", img: "/assets/clients/verity-alu.png" },
 ];
 
-const containerVariants = {
+const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { staggerChildren: 0.15 }
-  }
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
 const OurClients = () => {
   return (
-    <div className="our-clients-container">
+    <div className="clients-page-container">
+      <GlobalBackground />
       <Navbar />
 
       <motion.main
-        className="our-clients-main"
+        className="clients-main-content"
         initial="hidden"
         animate="visible"
-        variants={containerVariants}
       >
-        <motion.h1 variants={cardVariants}>Our Clients</motion.h1>
-        <motion.p className="subtitle" variants={cardVariants}>
-          Trusted by brands across industries and countries
-        </motion.p>
+        <div className="container">
+          <motion.header className="clients-hero-header" variants={fadeUp}>
+            <div className="service-badge-container">
+              <span className="dot"></span>
+              <span className="badge-text">Our Network</span>
+            </div>
+            <h1>Global <span className="font-italic">Partners</span></h1>
+            <p>Driving innovation alongside visionary brands across the globe.</p>
+          </motion.header>
 
-        {/* Sliding wrapper */}
-        <div className="clients-grid-wrapper">
-          <motion.div className="clients-grid" variants={containerVariants}>
-            {clients.concat(clients).map((client, idx) => (
+          <div className="clients-static-grid">
+            {clients.map((client, idx) => (
               <motion.a
                 key={idx}
                 href={client.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="client-card"
-                variants={cardVariants}
-                style={{
-                  backgroundImage: `url(${client.img})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
+                className="brand-card glass-morphism"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -10, borderColor: "var(--accent-blue)" }}
               >
-                <div className="client-overlay">
-                  <h2>{client.name}</h2>
-                  <span className="tag">{client.country}</span>
+                <div className="brand-visual">
+                  <img src={client.img} alt={client.name} className="brand-img" />
+                  <div className="brand-overlay">
+                    <span className="view-site">Visit Website</span>
+                  </div>
+                </div>
+                <div className="brand-info">
+                  <h3>{client.name}</h3>
+                  <span className="country-tag">{client.country}</span>
                 </div>
               </motion.a>
             ))}
-          </motion.div>
+          </div>
         </div>
       </motion.main>
 

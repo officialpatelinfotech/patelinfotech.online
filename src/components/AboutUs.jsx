@@ -1,81 +1,80 @@
 import React from "react";
 import { motion } from "framer-motion";
-import "../styles/AboutUs.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import GlobalBackground from "./GlobalBackground";
+import "../styles/AboutUs.css";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
 const AboutUs = () => {
   return (
-    <div style={{ backgroundColor: "#1e1e2f" }}>
+    <div className="about-page-container">
+      <GlobalBackground />
       <Navbar />
 
-      {/* Header Animation */}
-      <motion.header
-        className="about-header"
+      <motion.main
+        className="about-main-content"
         initial="hidden"
         animate="visible"
-        variants={fadeUp}
-        transition={{ duration: 0.8 }}
       >
-        <h1>About Us</h1>
-        <p>Get to know Patel Infotech Services</p>
-      </motion.header>
+        <div className="container">
+          <motion.header className="about-hero-header" variants={fadeUp}>
+            <div className="service-badge-container">
+              <span className="dot"></span>
+              <span className="badge-text">Our Story</span>
+            </div>
+            <h1>Architects of <span className="font-italic">Digital</span> Excellence</h1>
+            <p>We combine visionary design with robust engineering to build the future of the web.</p>
+          </motion.header>
 
-      {/* Content Section */}
-      <motion.div
-        className="about-content"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeUp}
-        transition={{ duration: 0.6 }}
-      >
-        <motion.h2 variants={fadeUp}>Who We Are</motion.h2>
-        <motion.p variants={fadeUp}>
-          Patel Infotech Services was established in <strong>January 2025</strong>{" "}
-          with a clear mission: to craft custom web applications and websites with
-          precision, creativity, and care. We are a forward-thinking digital
-          company committed to delivering cutting-edge solutions for clients
-          across industries.
-        </motion.p>
+          <div className="about-grid">
+            <motion.section className="about-section-card glass-morphism" variants={fadeUp}>
+              <h2>Who We Are</h2>
+              <p>
+                Established in <strong>January 2025</strong>, Patel Infotech Services was born from a passion for solving complex problems through elegant code. We aren't just developers; we are digital partners dedicated to your growth.
+              </p>
+            </motion.section>
 
-        <motion.h2 variants={fadeUp}>Meet Our Founder</motion.h2>
-        <motion.p variants={fadeUp}>
-          Our company is led by <strong>Shubham Patel</strong>, a seasoned
-          technology expert with over <strong>10 years of professional
-          experience</strong> in software development and digital solutions.
-          Shubham’s vision, leadership, and technical know-how form the backbone
-          of Patel Infotech Services, driving our team toward innovation and
-          excellence.
-        </motion.p>
+            <motion.section className="about-section-card glass-morphism" variants={fadeUp}>
+              <h2>Our Leadership</h2>
+              <div className="founder-info">
+                <p>
+                  Led by <strong>Shubham Patel</strong>, a technology strategist with over <strong>10 years of mastery</strong> in the software landscape. His philosophy of "Innovation through Precision" guides every project we undertake.
+                </p>
+              </div>
+            </motion.section>
 
-        <motion.h2 variants={fadeUp}>Our Mission</motion.h2>
-        <motion.p variants={fadeUp}>
-          To empower businesses by building reliable, scalable, and visually
-          stunning digital platforms that align perfectly with their goals.
-        </motion.p>
+            <motion.section className="about-section-card glass-morphism" variants={fadeUp}>
+              <h2>Our Mission</h2>
+              <p>
+                To redefine the digital experience by creating products that are not only functional but emotionally resonant and technologically superior.
+              </p>
+            </motion.section>
 
-        <motion.h2 variants={fadeUp}>Our Values</motion.h2>
-        <motion.ul variants={fadeUp}>
-          <motion.li variants={fadeUp}>
-            <strong>Integrity</strong> – We build trust through transparency and
-            honesty.
-          </motion.li>
-          <motion.li variants={fadeUp}>
-            <strong>Innovation</strong> – We embrace change and push creative
-            boundaries.
-          </motion.li>
-          <motion.li variants={fadeUp}>
-            <strong>Quality</strong> – We prioritize performance, security, and
-            user experience.
-          </motion.li>
-        </motion.ul>
-      </motion.div>
+            <motion.section className="about-section-card glass-morphism" variants={fadeUp}>
+              <h2>Core Values</h2>
+              <ul className="values-list">
+                <li>
+                  <span className="accent-dot"></span>
+                  <strong>Uncompromising Quality</strong> — High standards in every line of code.
+                </li>
+                <li>
+                  <span className="accent-dot"></span>
+                  <strong>Radical Transparency</strong> — Honesty is our only policy.
+                </li>
+                <li>
+                  <span className="accent-dot"></span>
+                  <strong>Continuous Evolution</strong> — Learning today to lead tomorrow.
+                </li>
+              </ul>
+            </motion.section>
+          </div>
+        </div>
+      </motion.main>
 
       <Footer />
     </div>

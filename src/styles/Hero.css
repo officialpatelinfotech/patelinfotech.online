@@ -1,0 +1,130 @@
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* Background moved to GlobalBackground component */
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    padding-left: 5%;
+    /* Align with navbar logo content */
+    padding-top: 55vh;
+    /* Improved vertical positioning based on reference */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Force children to left */
+    text-align: left;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    /* Slightly larger like reference */
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    /* Adjusted spacing */
+    text-transform: uppercase;
+}
+
+.hero-title .font-italic {
+    font-family: 'Playfair Display', serif !important;
+    /* Elegant serif italic */
+    font-style: italic;
+    font-weight: 400;
+}
+
+.hero-badge .dot {
+    width: 7px;
+    height: 7px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent-blue);
+}
+
+.hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    /* Reduced scale */
+    font-weight: 700;
+    line-height: 1.1;
+    /* Slightly more relaxed line height */
+    margin-bottom: 2.5rem;
+    color: #fff;
+    letter-spacing: -0.02em;
+    text-align: left;
+    width: 100%;
+    max-width: 900px;
+}
+
+.hero-description {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 5%;
+    /* Align with content */
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.scroll-dot {
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        padding-top: 25vh;
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: 1.2rem;
+        max-width: 100%;
+        line-height: 1.2;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 2rem;
+    }
+}

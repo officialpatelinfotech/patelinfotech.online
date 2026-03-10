@@ -1,0 +1,108 @@
+.services-grid-section {
+    padding: 8rem 0;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.services-header {
+    margin-bottom: 5rem;
+    background: transparent !important;
+    text-align: center;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: #fff;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.services-nav-labels {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.services-nav-labels span {
+    color: var(--text-main);
+    margin: 0 0.5rem;
+}
+
+.services-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.service-grid-card {
+    padding: 3.5rem 2.5rem;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    /* Prevents inherit underline on anchor */
+}
+
+.service-grid-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-10px);
+    border-color: var(--accent-blue);
+}
+
+.service-icon {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--accent-blue);
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.service-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+.service-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    flex: 1;
+}
+
+.service-link {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.service-link span {
+    transition: transform 0.3s ease;
+}
+
+.service-grid-card:hover .service-link span {
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .services-grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
