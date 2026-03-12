@@ -9,6 +9,7 @@ const clients = [
   { name: "Kaushalya Art Jewellery", link: "https://kaushalyaartjewellery.com", country: "India", img: "/assets/clients/kaushalya.png" },
   { name: "Crown & Halo", link: "https://crownandhalo.co.uk/", country: "United Kingdom", img: "/assets/clients/crownhalo.png" },
   { name: "Wellness Shoppee", link: "https://wellnessshoppee.com/", country: "Dubai", img: "/assets/clients/wellness.png" },
+  { name: "Avinyaan", link: "https://avinyaan.com/", country: "India", img: "/assets/clients/avinyaan.png" },
   { name: "Khar Jamaat", link: "https://kharjamaat.in/", country: "India", img: "/assets/clients/khar.png" },
   { name: "Verity Ateliers", link: "https://verityateliers.com/", country: "India", img: "/assets/clients/verity-ateliers.png" },
   { name: "Verity Grills", link: "https://veritygrills.com/", country: "India", img: "/assets/clients/verity-grills.png" },
@@ -60,12 +61,11 @@ const OurClients = () => {
                 <div className="brand-visual">
                   <img src={client.img} alt={client.name} className="brand-img" />
                   <div className="brand-overlay">
-                    <span className="view-site">Visit Website</span>
+                    <div className="brand-info-hover">
+                      <h3>{client.name}</h3>
+                      <span className="country-tag">{client.country}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="brand-info">
-                  <h3>{client.name}</h3>
-                  <span className="country-tag">{client.country}</span>
                 </div>
               </motion.a>
             ))}

@@ -1,7 +1,9 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import "../styles/WebsiteMaintenance.css";
+import GlobalBackground from "./GlobalBackground";
+import "../styles/Services.css"; // Using global services styling
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const fadeUp = {
@@ -10,100 +12,117 @@ const fadeUp = {
 };
 
 const WebsiteMaintenance = () => {
+  const navigate = useNavigate();
+
   const redirectToContact = () => {
-    window.location.href = "/contact-us";
+    navigate("/contact-us");
   };
 
   return (
-    <div className="maintenance-container">
+    <div className="services-page-container">
+      <GlobalBackground />
       <Navbar />
 
       <motion.main
+        className="services-detail-main"
         initial="hidden"
         animate="visible"
         variants={fadeUp}
         transition={{ duration: 0.6 }}
       >
-        {/* Hero Section */}
-        <motion.section className="maintenance-hero" variants={fadeUp}>
-          <motion.h1 variants={fadeUp}>
-            Website Maintenance Plans
-          </motion.h1>
-
-          <motion.p className="subtitle" variants={fadeUp}>
-            Ongoing updates, backups, security checks, and performance monitoring —
-            all handled for you.
-          </motion.p>
-
-          <motion.div
-            className="guarantee-badge"
-            variants={fadeUp}
-            whileHover={{ scale: 1.05 }}
-          >
-            <span>✓ 99.9% Uptime Guarantee</span>
-          </motion.div>
-        </motion.section>
-
-        {/* Value Proposition */}
-        <motion.section
-          className="value-props"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.15 } },
-          }}
-        >
-          {[
-            {
-              icon: "🛡️",
-              title: "Security First",
-              desc: "Regular vulnerability scans and malware protection",
-            },
-            {
-              icon: "⚡",
-              title: "Peak Performance",
-              desc: "Monthly speed optimizations and broken link checks",
-            },
-            {
-              icon: "📅",
-              title: "Update Calendar",
-              desc: "Scheduled maintenance during low-traffic periods",
-            },
-          ].map((item, index) => (
+        <div className="container">
+          {/* Hero Section */}
+          <header className="services-detail-header">
             <motion.div
-              key={index}
-              className="prop-card"
-              variants={fadeUp}
-              whileHover={{ scale: 1.06 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="service-badge-container"
             >
-              <div className="icon">{item.icon}</div>
-              <h3>{item.title}</h3>
-              <p>{item.desc}</p>
+              <span className="dot"></span>
+              <span className="badge-text">Website Maintenance</span>
             </motion.div>
-          ))}
-        </motion.section>
 
-        {/* CTA */}
-        <motion.section
-          className="maintenance-cta"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-          <motion.h2 variants={fadeUp}>
-            Focus on Your Business, We'll Handle the Tech
-          </motion.h2>
+            <motion.h1 variants={fadeUp}>
+              Stay Secure and <span className="font-italic">Updated</span>
+            </motion.h1>
 
-          <motion.button
-            onClick={redirectToContact}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
+            <motion.p className="subtitle" variants={fadeUp}>
+              Ongoing updates, backups, security checks, and performance monitoring —
+              all handled for you.
+            </motion.p>
+          </header>
+
+          {/* Value Proposition */}
+          <motion.div
+            className="services-detailed-list"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.15 } },
+            }}
           >
-            Secure Your Website Now
-          </motion.button>
-        </motion.section>
+            {[
+              {
+                icon: "🛡️",
+                title: "Security First",
+                desc: "Regular vulnerability scans and malware protection",
+                features: ["Daily Scans", "Malware Removal", "Firewall Optimization"]
+              },
+              {
+                icon: "⚡",
+                title: "Peak Performance",
+                desc: "Monthly speed optimizations and broken link checks",
+                features: ["Cache Tuning", "Image Compression", "Database Optimization"]
+              },
+              {
+                icon: "📅",
+                title: "Update Calendar",
+                desc: "Scheduled maintenance during low-traffic periods",
+                features: ["Plugin Updates", "Theme Updates", "Core Upgrades"]
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="service-detail-card glass-morphism"
+                onClick={redirectToContact}
+                style={{ cursor: "pointer" }}
+                variants={fadeUp}
+              >
+                <div className="service-card-top">
+                  <span className="service-number">{item.icon}</span>
+                  <h3>{item.title}</h3>
+                </div>
+                <p className="service-full-desc">{item.desc}</p>
+                <div className="service-features">
+                  {item.features.map((feat, fIdx) => (
+                    <span key={fIdx} className="feature-tag">{feat}</span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Guarantee Badge embedded seamlessly */}
+          <motion.div
+            className="services-detail-header"
+            variants={fadeUp}
+            style={{ marginTop: "3rem", marginBottom: "0" }}
+          >
+            <div style={{ display: "inline-flex", background: "rgba(0, 136, 255, 0.1)", border: "1px solid rgba(0, 136, 255, 0.2)", padding: "10px 20px", borderRadius: "30px", color: "var(--accent-blue)", fontWeight: "bold" }}>
+              ✓ 99.9% Uptime Guarantee
+            </div>
+          </motion.div>
+
+          {/* CTA */}
+          <footer className="services-page-footer">
+            <h2>Focus on your business, we'll handle the tech.</h2>
+            <button className="btn-primary" onClick={redirectToContact}>
+              Secure Your Website Now
+            </button>
+          </footer>
+        </div>
       </motion.main>
 
       <Footer />

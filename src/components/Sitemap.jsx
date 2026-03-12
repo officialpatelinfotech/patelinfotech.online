@@ -3,8 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import GlobalBackground from "./GlobalBackground";
 import "../styles/Sitemap.css";
 import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
 const Sitemap = () => {
   const sitemapSections = [
@@ -54,52 +60,50 @@ const Sitemap = () => {
   ];
 
   return (
-    <div className="sitemap-container">
+    <div className="sitemap-page-container">
+      <GlobalBackground />
       <Navbar />
 
       <motion.main
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="sitemap-main-content"
+        initial="hidden"
+        animate="visible"
       >
-        <h1>Website Sitemap</h1>
+        <div className="container">
+          <motion.header className="sitemap-hero-header" variants={fadeUp}>
+            <div className="service-badge-container">
+              <span className="dot"></span>
+              <span className="badge-text">Site Navigation</span>
+            </div>
+            <h1>Website <span className="font-italic">Sitemap</span></h1>
+            <p>Navigate effortlessly through our entire digital ecosystem.</p>
+          </motion.header>
 
-        <motion.div
-          className="sitemap-grid"
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.15 } },
-          }}
-        >
-          {sitemapSections.map((section, index) => (
-            <motion.div
-              key={index}
-              className="sitemap-section"
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                show: { opacity: 1, y: 0 },
-              }}
-              whileHover={{ scale: 1.03 }}
-              transition={{ duration: 0.4 }}
-            >
-              <h2>{section.title}</h2>
-              <ul>
-                {section.links.map(([path, label], i) => (
-                  <motion.li
-                    key={i}
-                    whileHover={{ x: 6 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Link to={path}>{label}</Link>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </motion.div>
+          <div className="sitemap-static-grid">
+            {sitemapSections.map((section, index) => (
+              <motion.div
+                key={index}
+                className="sitemap-section-card glass-morphism"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5, borderColor: "var(--accent-blue)" }}
+              >
+                <h2>{section.title}</h2>
+                <ul className="sitemap-links-list">
+                  {section.links.map(([path, label], i) => (
+                    <li key={i}>
+                      <span className="list-dot"></span>
+                      <Link to={path}>{label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </motion.main>
 
       <Footer />

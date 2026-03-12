@@ -47,7 +47,6 @@
 }
 
 .clients-hero-header h1 {
-  font-family: 'Poppins', sans-serif !important;
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 800;
   margin-bottom: 2rem;
@@ -111,7 +110,7 @@
 .brand-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,41 +123,32 @@
   opacity: 1;
 }
 
-.view-site {
-  padding: 0.8rem 1.8rem;
-  background: #fff;
-  color: #000;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-transform: uppercase;
+.brand-info-hover {
+  text-align: center;
   transform: translateY(20px);
   transition: var(--transition-smooth);
+  padding: 2rem;
 }
 
-.brand-card:hover .view-site {
+.brand-card:hover .brand-info-hover {
   transform: translateY(0);
 }
 
-.brand-info {
-  padding: 2.5rem;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.brand-info h3 {
-  font-size: 1.6rem;
+.brand-info-hover h3 {
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
   color: #fff;
   letter-spacing: -0.02em;
 }
 
 .country-tag {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--accent-blue);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
+  display: block;
 }
 
 @media (max-width: 1200px) {
@@ -186,7 +176,7 @@
     font-size: clamp(2rem, 10vw, 3.5rem);
   }
 
-  .brand-info h3 {
-    font-size: 1.3rem;
+  .brand-info-hover h3 {
+    font-size: 1.4rem;
   }
 }

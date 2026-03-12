@@ -47,7 +47,6 @@
 }
 
 .about-hero-header h1 {
-  font-family: 'Poppins', sans-serif !important;
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 800;
   line-height: 1.1;

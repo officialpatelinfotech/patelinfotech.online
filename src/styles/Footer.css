@@ -3,6 +3,8 @@
   background-color: #050505;
   border-top: 1px solid var(--glass-border);
   color: #fff;
+  position: relative;
+  z-index: 10;
 }
 
 .footer-top {

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import GlobalBackground from "./GlobalBackground";
@@ -27,31 +26,44 @@ const ContactUs = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    emailjs
-      .send(
-        "service_wvjla62",
-        "template_t1a3nxb",
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
-          message: formData.message,
+    try {
+      // Direct local XAMPP URL for local dev testing
+      const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+      const apiUrl = isLocalhost
+        ? "http://localhost/Patel%20Info%20Online/patelinfotech.online/public/api/contact.php"
+        : "/api/contact.php";
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        "VzFpMF75ilPHVuNWs"
-      )
-      .then(
-        () => {
-          setSuccess(true);
-          setError(false);
-          setFormData({ name: "", email: "", message: "" });
-        },
-        () => {
-          setError(true);
-          setSuccess(false);
-        }
-      );
+        body: JSON.stringify(formData),
+      });
+
+      const responseText = await response.text();
+      let result;
+      try {
+        result = JSON.parse(responseText);
+      } catch (e) {
+        throw new Error("Invalid response from server. Make sure XAMPP Apache is running!");
+      }
+
+      if (response.ok && result.status === "success") {
+        setSuccess(true);
+        setError(false);
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error(result.message || "Failed to send message");
+      }
+    } catch (err) {
+      console.error(err);
+      setError(err.message || "Failed to send. Please try again.");
+      setSuccess(false);
+    }
   };
 
   return (
@@ -193,7 +205,7 @@ const ContactUs = () => {
 
               {error && (
                 <motion.div className="form-status error" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  ❌ Failed to send. Please try again.
+                  ❌ {typeof error === 'string' ? error : "Failed to send. Please try again."}
                 </motion.div>
               )}
             </motion.div>
