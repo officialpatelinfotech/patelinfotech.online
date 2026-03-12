@@ -63,9 +63,13 @@ button {
 
 /* Global Buttons */
 .btn-primary {
-  display: inline-block;
-  padding: 1.2rem 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 2.4rem;
   background: #fff;
+  border: 1px solid transparent;
   color: #000;
   font-weight: 700;
   font-size: 0.95rem;
@@ -73,6 +77,11 @@ button {
   text-transform: uppercase;
   transition: var(--transition-smooth);
   text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  box-sizing: border-box;
+  line-height: 1;
+  margin: 0;
 }
 
 .btn-primary:hover {
@@ -83,8 +92,11 @@ button {
 }
 
 .btn-secondary {
-  display: inline-block;
-  padding: 1.2rem 2.4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 2.4rem;
   background: #111;
   border: 1px solid var(--glass-border);
   color: #fff;
@@ -94,6 +106,11 @@ button {
   text-transform: uppercase;
   transition: var(--transition-smooth);
   text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  box-sizing: border-box;
+  line-height: 1;
+  margin: 0;
 }
 
 .btn-secondary:hover {
