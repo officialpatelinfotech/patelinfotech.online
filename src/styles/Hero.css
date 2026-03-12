@@ -16,8 +16,8 @@
     width: 100%;
     padding-left: 5%;
     /* Align with navbar logo content */
-    padding-top: 55vh;
-    /* Improved vertical positioning based on reference */
+    margin-top: 80px;
+    /* Account for fixed navbar */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -81,6 +81,7 @@
 .hero-cta {
     display: flex;
     gap: 1.5rem;
+    align-items: center;
 }
 
 .hero-scroll-indicator {

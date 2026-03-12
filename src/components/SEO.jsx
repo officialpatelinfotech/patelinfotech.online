@@ -2,7 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import "../styles/SEO.css";
+import GlobalBackground from "./GlobalBackground";
+import { useNavigate } from "react-router-dom";
+import "../styles/Services.css"; // Using global services styling
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -16,78 +18,124 @@ const stagger = {
 };
 
 const SEO = () => {
+  const navigate = useNavigate();
+
   const redirectToContact = () => {
-    window.location.href = "/contact-us";
+    navigate("/contact-us");
   };
 
   return (
-    <div className="seo-container">
+    <div className="services-page-container">
+      <GlobalBackground />
       <Navbar />
 
       <motion.main
+        className="services-detail-main"
         initial="hidden"
         animate="visible"
         variants={fadeUp}
         transition={{ duration: 0.6 }}
       >
-        {/* Header */}
-        <motion.h1 variants={fadeUp}>SEO Optimization Services</motion.h1>
-        <motion.p variants={fadeUp}>
-          Boost your online visibility and dominate search rankings with our
-          data-driven SEO strategies.
-        </motion.p>
-
-        {/* Services */}
-        <motion.div
-          className="services-grid"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {[
-            { icon: "🔍", title: "Keyword Research", text: "Identify high-value keywords to target your ideal audience." },
-            { icon: "📈", title: "On-Page SEO", text: "Optimize content, meta tags, and structure for search engines." },
-            { icon: "🔗", title: "Link Building", text: "Earn authoritative backlinks to improve domain authority." },
-          ].map((item, index) => (
+        <div className="container">
+          {/* Header */}
+          <header className="services-detail-header">
             <motion.div
-              key={index}
-              className="service-card"
-              variants={fadeUp}
-              whileHover={{ y: -6, scale: 1.03 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="service-badge-container"
             >
-              <div className="icon">{item.icon}</div>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
+              <span className="dot"></span>
+              <span className="badge-text">Search Engine Optimization</span>
             </motion.div>
-          ))}
-        </motion.div>
 
-        {/* Benefits */}
-        <motion.div
-          className="seo-benefits"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          transition={{ delay: 0.2 }}
-        >
-          <h2>Why Our SEO Works</h2>
-          <ul>
-            <li>✅ Google Algorithm Updates Monitoring</li>
-            <li>✅ Monthly Performance Reports</li>
-            <li>✅ 100% White-Hat Techniques</li>
-          </ul>
-        </motion.div>
+            <motion.h1 variants={fadeUp}>
+              Dominate Search <span className="font-italic">Rankings</span>
+            </motion.h1>
 
-        {/* CTA */}
-        <motion.button
-          onClick={redirectToContact}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Get a Free SEO Audit
-        </motion.button>
+            <motion.p variants={fadeUp}>
+              Boost your online visibility and dominate search rankings with our
+              data-driven SEO strategies.
+            </motion.p>
+          </header>
+
+          {/* Services */}
+          <motion.div
+            className="services-detailed-list"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {[
+              {
+                icon: "🔍",
+                title: "Keyword Research",
+                desc: "Identify high-value keywords to target your ideal audience.",
+                features: ["Search Volume Analysis", "Intent Tracking", "Competitor Keywords"]
+              },
+              {
+                icon: "📈",
+                title: "On-Page SEO",
+                desc: "Optimize content, meta tags, and structure for search engines.",
+                features: ["Meta Optimization", "Content Strategy", "Site Speed"]
+              },
+              {
+                icon: "🔗",
+                title: "Link Building",
+                desc: "Earn authoritative backlinks to improve domain authority.",
+                features: ["Guest Posting", "Digital PR", "Outreach Campaigns"]
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="service-detail-card glass-morphism"
+                onClick={redirectToContact}
+                style={{ cursor: "pointer" }}
+                variants={fadeUp}
+              >
+                <div className="service-card-top">
+                  <span className="service-number">{item.icon}</span>
+                  <h3>{item.title}</h3>
+                </div>
+                <p className="service-full-desc">{item.desc}</p>
+                <div className="service-features">
+                  {item.features.map((feat, fIdx) => (
+                    <span key={fIdx} className="feature-tag">{feat}</span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Benefits */}
+          <motion.div
+            className="services-detail-header"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ delay: 0.2 }}
+            style={{ marginTop: "6rem", marginBottom: "0" }}
+          >
+            <h2 style={{ fontSize: "2rem", marginBottom: "2rem", color: "#fff", fontWeight: "700" }}>
+              Why Our SEO Works
+            </h2>
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem" }}>
+              <span className="feature-tag" style={{ border: "1px solid rgba(0, 136, 255, 0.4)", background: "rgba(0, 136, 255, 0.15)" }}>Google Algorithm Updates Monitoring</span>
+              <span className="feature-tag" style={{ border: "1px solid rgba(0, 136, 255, 0.4)", background: "rgba(0, 136, 255, 0.15)" }}>Monthly Performance Reports</span>
+              <span className="feature-tag" style={{ border: "1px solid rgba(0, 136, 255, 0.4)", background: "rgba(0, 136, 255, 0.15)" }}>100% White-Hat Techniques</span>
+            </div>
+          </motion.div>
+
+          {/* CTA */}
+          <footer className="services-page-footer">
+            <h2>Let's drive organic traffic to your site.</h2>
+            <button className="btn-primary" onClick={redirectToContact}>
+              Get a Free SEO Audit
+            </button>
+          </footer>
+        </div>
       </motion.main>
 
       <Footer />

@@ -39,52 +39,76 @@ const Projects = () => {
   ];
 
   return (
-    <div className="services-container">
+    <div className="services-page-container">
       <Navbar />
 
       <motion.main
-        className="services-main"
+        className="services-detail-main"
         initial="hidden"
         animate="visible"
         variants={fadeUp}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.8 }}
       >
-        {/* Page Title */}
-        <motion.h1 variants={fadeUp}>Projects That Captivate</motion.h1>
-        <motion.p variants={fadeUp}>
-          Bold ideas engineered to stop scrolls, spark conversations, and drive
-          measurable hype for brands.
-        </motion.p>
-
-        {/* Projects Grid */}
-        <motion.div
-          className="services-grid"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {attractionProjects.map((project) => (
-            <motion.div
-              key={project.id}
-              className="service-card"
+        <div className="container">
+          <header className="services-detail-header">
+            <motion.h1
               variants={fadeUp}
-              whileHover={{ y: -6, scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 200 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
             >
-              <h2>
-                <Link to={project.link}>{project.title}</Link>
-              </h2>
+              Projects That <span className="font-italic">Captivate</span>
+            </motion.h1>
+            <motion.p
+              variants={fadeUp}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              Bold ideas engineered to stop scrolls, spark conversations, and drive
+              measurable hype for brands.
+            </motion.p>
+          </header>
 
-              <p className="project-category">{project.category}</p>
-              <p>{project.description}</p>
+          {/* Projects Grid */}
+          <motion.div
+            className="services-detailed-list"
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {attractionProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                className="service-detail-card glass-morphism"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -10, borderColor: "var(--accent-blue)" }}
+              >
+                <div className="service-card-top">
+                  <span className="service-number">0{project.id}</span>
+                  <h3>
+                    <Link to={project.link} style={{ color: 'inherit', textDecoration: 'none' }}>{project.title}</Link>
+                  </h3>
+                </div>
 
-              <Link to={project.link} className="project-link">
-                Source code →
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+                <div className="service-features" style={{ marginBottom: '1.5rem' }}>
+                  <span className="feature-tag">{project.category}</span>
+                </div>
+
+                <p className="service-full-desc">{project.description}</p>
+
+                <Link to={project.link} className="project-link" style={{ color: "var(--accent-blue)", fontWeight: "600", textDecoration: "none", display: "inline-block", marginTop: "1rem" }}>
+                  Source code →
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </motion.main>
 
       <Footer />

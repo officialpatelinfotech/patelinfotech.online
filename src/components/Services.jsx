@@ -3,10 +3,12 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import GlobalBackground from "./GlobalBackground";
 import "../styles/Services.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const Services = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="services-page-container">
       <GlobalBackground />
@@ -52,36 +54,42 @@ const Services = () => {
               {
                 title: "Web Development",
                 icon: "01",
+                path: "/website-development",
                 desc: "We build robust, scalable, and high-performance web applications using cutting-edge technologies like React, Next.js, and Node.js. Our solutions are tailored to your business logic, ensuring security, speed, and a seamless user journey.",
                 features: ["Custom Web Apps", "E-commerce Platforms", "API Integrations", "Cloud Solutions"]
               },
               {
                 title: "Website Design",
                 icon: "02",
+                path: "/website-design",
                 desc: "First impressions matter. Our designs are not just visually stunning but are strategically crafted to convert visitors into customers. We focus on modern aesthetics, brand identity, and multi-device responsiveness.",
                 features: ["Corporate Websites", "Landing Pages", "Brand Strategy", "Interactive UI"]
               },
               {
                 title: "UI/UX Design",
                 icon: "03",
+                path: "/ui-ux-design",
                 desc: "User-centric design is at the heart of everything we do. We conduct deep research to understand your audience and create intuitive interfaces that make interaction effortless and delightful.",
                 features: ["User Research", "Wireframing", "Prototyping", "Design Systems"]
               },
               {
                 title: "SEO Optimization",
                 icon: "04",
+                path: "/seo",
                 desc: "Be seen where it matters. Our data-driven SEO strategies improve your search engine rankings, drive organic traffic, and ensure your business stays ahead of the competition in the digital landscape.",
                 features: ["Technical SEO", "Content Strategy", "Keyword Research", "Analytics & Reporting"]
               },
               {
                 title: "Website Maintenance",
                 icon: "05",
+                path: "/website-maintenance",
                 desc: "Your website needs constant care to perform at its best. We provide proactive maintenance, security patches, performance tuning, and regular updates to keep your digital asset running smoothly 24/7.",
                 features: ["Security Monitoring", "Daily Backups", "Performance Optimization", "Content Updates"]
               },
               {
                 title: "Hosting & Deployment",
                 icon: "06",
+                path: "/hosting",
                 desc: "Fast, secure, and reliable hosting is the foundation of any successful website. We offer managed hosting solutions and automated deployment pipelines to ensure your site is always online and lightning-fast.",
                 features: ["Managed Servers", "SSL Protection", "CI/CD Pipelines", "CDN Integration"]
               }
@@ -89,6 +97,8 @@ const Services = () => {
               <motion.div
                 key={index}
                 className="service-detail-card glass-morphism"
+                onClick={() => navigate(service.path)}
+                style={{ cursor: "pointer" }}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

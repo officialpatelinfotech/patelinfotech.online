@@ -1,7 +1,9 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import "../styles/WebsiteDesign.css";
+import GlobalBackground from "./GlobalBackground";
+import "../styles/Services.css"; // Using global services styling
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const fadeUp = {
@@ -10,109 +12,112 @@ const fadeUp = {
 };
 
 const WebsiteDesign = () => {
+  const navigate = useNavigate();
+
   const redirectToContact = () => {
-    window.location.href = "/contact-us";
+    navigate("/contact-us");
   };
 
   return (
-    <div className="website-design-container">
+    <div className="services-page-container">
+      <GlobalBackground />
       <Navbar />
 
       <motion.main
+        className="services-detail-main"
         initial="hidden"
         animate="visible"
         variants={fadeUp}
         transition={{ duration: 0.6 }}
       >
-        {/* Hero Section */}
-        <motion.section className="design-hero" variants={fadeUp}>
-          <motion.h1 variants={fadeUp}>
-            Website Design That Converts
-          </motion.h1>
+        <div className="container">
+          {/* Header Section */}
+          <header className="services-detail-header">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="service-badge-container"
+            >
+              <span className="dot"></span>
+              <span className="badge-text">Website Design</span>
+            </motion.div>
 
-          <motion.p variants={fadeUp}>
-            We create visually stunning, user-friendly websites that align with
-            your brand and drive business growth.
-          </motion.p>
+            <motion.h1 variants={fadeUp}>
+              Design That <span className="font-italic">Converts</span>
+            </motion.h1>
 
-          <motion.button
-            onClick={redirectToContact}
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
+            <motion.p variants={fadeUp}>
+              We create visually stunning, user-friendly websites that align with
+              your brand and effectively drive business growth.
+            </motion.p>
+          </header>
+
+          {/* Process Section (Reusing Services styling) */}
+          <motion.div
+            className="services-detailed-list"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.15 } },
+            }}
           >
-            Get Your Free Design Consultation
-          </motion.button>
-        </motion.section>
-
-        {/* Process Section */}
-        <motion.section
-          className="design-process"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.15 } },
-          }}
-        >
-          <motion.h2 variants={fadeUp}>Our Design Process</motion.h2>
-
-          <div className="process-steps">
             {[
               {
-                step: "1",
+                step: "01",
                 title: "Discovery",
-                desc: "Research your business, audience, and competitors",
+                desc: "Research your business, target audience, and key competitors to establish a solid foundation.",
+                features: ["Market Research", "Competitor Analysis", "Brand Identity"]
               },
               {
-                step: "2",
+                step: "02",
                 title: "Wireframing",
-                desc: "Create structural blueprints for key pages",
+                desc: "Create structural blueprints and logic flow for key pages to outline content and functionality.",
+                features: ["UX Planning", "Information Architecture", "Sitemaps"]
               },
               {
-                step: "3",
+                step: "03",
                 title: "Visual Design",
-                desc: "Develop high-fidelity mockups with your branding",
+                desc: "Develop high-fidelity aesthetic mockups integrated perfectly with your specific branding goals.",
+                features: ["UI Design", "Brand Integration", "Interactive Prototypes"]
               },
               {
-                step: "4",
+                step: "04",
                 title: "Development Ready",
-                desc: "Deliver assets and specs for developers",
+                desc: "Finalize layouts and deliver precisely detailed design assets and robust specs for developers.",
+                features: ["Design Systems", "Asset Export", "Developer Handoff"]
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="step"
+                className="service-detail-card glass-morphism"
+                onClick={redirectToContact}
+                style={{ cursor: "pointer" }}
                 variants={fadeUp}
-                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
               >
-                <div className="step-number">{item.step}</div>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
+                <div className="service-card-top">
+                  <span className="service-number">{item.step}</span>
+                  <h3>{item.title}</h3>
+                </div>
+                <p className="service-full-desc">{item.desc}</p>
+                <div className="service-features">
+                  {item.features.map((feat, fIdx) => (
+                    <span key={fIdx} className="feature-tag">{feat}</span>
+                  ))}
+                </div>
               </motion.div>
             ))}
-          </div>
-        </motion.section>
+          </motion.div>
 
-        {/* CTA Section */}
-        <motion.section
-          className="design-cta"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-          <motion.h2 variants={fadeUp}>
-            Ready to Elevate Your Online Presence?
-          </motion.h2>
-
-          <motion.button
-            onClick={redirectToContact}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Start Your Project Today
-          </motion.button>
-        </motion.section>
+          <footer className="services-page-footer">
+            <h2>Ready to Elevate Your Online Presence?</h2>
+            <button className="btn-primary" onClick={redirectToContact}>
+              Start Your Project Today
+            </button>
+          </footer>
+        </div>
       </motion.main>
 
       <Footer />
