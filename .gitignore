@@ -11,6 +11,7 @@
 # production
 /build
 /public/assets/3163534-uhd_3840_2160_30fps.mp4
+build.zip
 
 # misc
 .DS_Store
