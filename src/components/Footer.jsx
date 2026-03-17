@@ -10,7 +10,14 @@ const Footer = () => {
         <div className="footer-top">
           <div className="footer-brand-section">
             <div className="navbar-logo">
-              PATEL<span>INFOTECH</span>
+              <Link to="/" aria-label="Patel Infotech">
+                <img
+                  src={`${process.env.PUBLIC_URL}/assets/logo.png`}
+                  alt="Patel Infotech"
+                  className="site-logo"
+                />
+                <span className="site-name">Patel Infotech Services</span>
+              </Link>
             </div>
             <p className="footer-tagline">
               Delivering high-end digital solutions with <br />

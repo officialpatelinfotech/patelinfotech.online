@@ -24,9 +24,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "api": "php -S 127.0.0.1:8000 -t public",
+    "build": "craco build",
+    "postbuild": "rm -rf build/api",
+    "test": "craco test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -48,9 +50,10 @@
     ]
   },
   "homepage": "https://patelinfotech.online",
-  "author": "Patel Infotech",
+  "author": "Patel Infotech Services",
   "license": "ISC",
   "devDependencies": {
+    "@craco/craco": "^7.1.0",
     "prettier": "3.7.4"
   }
 }

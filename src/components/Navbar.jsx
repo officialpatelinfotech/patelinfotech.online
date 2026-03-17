@@ -46,19 +46,20 @@ const Navbar = () => {
 
   const handleLinkClick = (e, link) => {
     if (isMenuOpen) {
-      // Small screen / Mobile menu logic
-      if (link.hasDropdown) {
-        e.preventDefault();
-        setActiveCategory(activeCategory === link.name ? null : link.name);
-      } else {
-        setActiveCategory(null);
-        setIsMenuOpen(false);
-      }
+      // Small screen / Mobile: always navigate directly (no dropdown popup)
+      setActiveCategory(null);
+      setIsMenuOpen(false);
     } else {
       // Desktop logic
       setActiveCategory(null);
     }
   };
+
+  // Safety: if route changes, close any open menus.
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setActiveCategory(null);
+  }, [location.pathname]);
 
   return (
     <>
@@ -67,7 +68,12 @@ const Navbar = () => {
           <div className="navbar-content">
             <div className="navbar-logo">
               <Link to="/" onClick={() => { setIsMenuOpen(false); setActiveCategory(null); }}>
-                <span>patel</span>infotech
+                <img
+                  src={`${process.env.PUBLIC_URL}/assets/logo.png`}
+                  alt="Patel Infotech"
+                  className="site-logo"
+                />
+                <span className="site-name">Patel Infotech Services</span>
               </Link>
             </div>
 
@@ -75,8 +81,8 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <li
                   key={link.name}
-                  onMouseEnter={() => link.hasDropdown && handleMouseEnter(link.name)}
-                  onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
+                  onMouseEnter={() => !isMenuOpen && link.hasDropdown && handleMouseEnter(link.name)}
+                  onMouseLeave={() => !isMenuOpen && link.hasDropdown && handleMouseLeave()}
                 >
                   <Link
                     to={link.path}
@@ -96,7 +102,10 @@ const Navbar = () => {
 
               <button
                 className={`mobile-menu-btn ${isMenuOpen ? "active" : ""}`}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                onClick={() => {
+                  setIsMenuOpen(!isMenuOpen);
+                  setActiveCategory(null);
+                }}
                 aria-label="Toggle Menu"
               >
                 <span></span>

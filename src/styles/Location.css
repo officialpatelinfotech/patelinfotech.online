@@ -114,6 +114,11 @@
 }
 
 @media (max-width: 768px) {
+    .location-page-container {
+    min-height: 65vh;
+    padding-top: 65px;
+}
+
     .location-hero-header h1 {
         font-size: clamp(2rem, 10vw, 3.5rem);
     }

@@ -7,6 +7,25 @@
   z-index: 10;
 }
 
+.footer-brand-section .navbar-logo .site-logo {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+
+.footer-brand-section .navbar-logo a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.footer-brand-section .navbar-logo .site-name {
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
 .footer-top {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -109,6 +128,19 @@
 
   .footer-links-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .footer-brand-section .navbar-logo a {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-brand-section .navbar-logo .site-logo {
+    height: 40px;
+  }
+
+  .footer-brand-section .navbar-logo .site-name {
+    text-align: center;
   }
 }
 

@@ -1,12 +1,21 @@
 import React from "react";
 import "../styles/GlobalBackground.css";
-import bgImage from "../assets/images/glass_prism_hero_bg.png";
+import bgVideo from "../assets/videos/3163534-hd_1920_1080_30fps.mp4";
 
 const GlobalBackground = () => {
     return (
         <div className="global-bg-container">
             <div className="global-bg-image">
-                <img src={bgImage} alt="" />
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    aria-hidden="true"
+                >
+                    <source src={bgVideo} type="video/mp4" />
+                </video>
             </div>
             <div className="global-bg-overlay"></div>
         </div>

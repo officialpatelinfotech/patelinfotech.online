@@ -1,0 +1,9 @@
+{
+  "name": "patelinfotech-vercel-api",
+  "private": true,
+  "version": "1.0.0",
+  "type": "commonjs",
+  "dependencies": {
+    "nodemailer": "^6.10.1"
+  }
+}

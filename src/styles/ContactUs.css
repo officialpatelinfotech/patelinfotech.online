@@ -56,7 +56,7 @@
 }
 
 .contact-hero-header h1 .font-italic {
-  font-family: 'Playfair Display', serif !important;
+  font-family: "Playfair Display", serif !important;
   font-style: italic;
   font-weight: 400;
 }
@@ -234,6 +234,11 @@
 @media (max-width: 768px) {
   .contact-main-content {
     padding: 4rem 1rem 6rem;
+  }
+
+  .contact-page-container {
+    min-height: 0vh;
+    padding-top: 65px;
   }
 
   .contact-info-panel,

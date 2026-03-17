@@ -30,7 +30,7 @@ const Location = () => {
               <span className="badge-text">Find Us</span>
             </div>
             <h1>Our Office <span className="font-italic">Location</span></h1>
-            <p className="location-subtitle">Visit Patel Infotech at our registered office in Maharashtra.</p>
+            <p className="location-subtitle">Visit Patel Infotech Services at our registered office in Maharashtra.</p>
           </motion.header>
 
           <div className="location-grid">

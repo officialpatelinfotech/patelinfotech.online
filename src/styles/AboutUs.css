@@ -142,6 +142,12 @@
     padding: 4rem 0 6rem;
   }
 
+  .about-page-container {
+  min-height: 0vh;
+  padding-top: 65px;
+}
+
+
   .about-hero-header {
     margin-bottom: 3.5rem;
   }

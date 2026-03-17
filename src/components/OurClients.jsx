@@ -8,8 +8,9 @@ import { motion } from "framer-motion";
 const clients = [
   { name: "Kaushalya Art Jewellery", link: "https://kaushalyaartjewellery.com", country: "India", img: "/assets/clients/kaushalya.png" },
   { name: "Crown & Halo", link: "https://crownandhalo.co.uk/", country: "United Kingdom", img: "/assets/clients/crownhalo.png" },
-  { name: "Wellness Shoppee", link: "https://wellnessshoppee.com/", country: "Dubai", img: "/assets/clients/wellness.png" },
   { name: "Avinyaan", link: "https://avinyaan.com/", country: "India", img: "/assets/clients/avinyaan.png" },
+  { name: "Mobiebook", link: "https://mobiebook.online/#/home", country: "India", img: "/assets/clients/mobiebook.png" },
+  { name: "Wellness Shoppee", link: "https://wellnessshoppee.com/", country: "Dubai", img: "/assets/clients/wellness.png" },
   { name: "Khar Jamaat", link: "https://kharjamaat.in/", country: "India", img: "/assets/clients/khar.png" },
   { name: "Verity Ateliers", link: "https://verityateliers.com/", country: "India", img: "/assets/clients/verity-ateliers.png" },
   { name: "Verity Grills", link: "https://veritygrills.com/", country: "India", img: "/assets/clients/verity-grills.png" },

@@ -18,7 +18,8 @@
     left: 0;
 }
 
-.global-bg-image img {
+.global-bg-image img,
+.global-bg-image video {
     width: 100%;
     height: 100%;
     object-fit: cover;

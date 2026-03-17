@@ -143,6 +143,11 @@
 }
 
 @media (max-width: 768px) {
+  .sitemap-page-container {
+  /* min-height: 65vh; */
+  padding-top: 65px;
+}
+
   .sitemap-static-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;

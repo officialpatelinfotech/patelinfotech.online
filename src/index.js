@@ -21,12 +21,14 @@ import SolarSystem from "./components/SolarSystem";
 import Location from "./components/Location";
 import OurClients from "./components/OurClients";
 import ScrollToTop from "./components/ScrollToTop";
+import RouteTitle from "./components/RouteTitle";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
     <ScrollToTop />
+    <RouteTitle />
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/services" element={<Services />} />

@@ -20,6 +20,7 @@ const ContactUs = () => {
 
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,12 +30,22 @@ const ContactUs = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
     try {
-      // Direct local XAMPP URL for local dev testing
-      const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-      const apiUrl = isLocalhost
-        ? "http://localhost/Patel%20Info%20Online/patelinfotech.online/public/api/contact.php"
-        : "/api/contact.php";
+      // Configure local dev via: REACT_APP_CONTACT_API_URL=http://localhost:8000/api/contact.php
+      // Production/default: same-origin PHP endpoint under /public/api
+      const runtimeApiUrl =
+        typeof window !== "undefined" &&
+        window.__APP_CONFIG__ &&
+        typeof window.__APP_CONFIG__.CONTACT_API_URL === "string" &&
+        window.__APP_CONFIG__.CONTACT_API_URL.trim() !== ""
+          ? window.__APP_CONFIG__.CONTACT_API_URL.trim()
+          : null;
+
+      const apiUrl =
+        runtimeApiUrl || process.env.REACT_APP_CONTACT_API_URL || "/api/contact.php";
 
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -49,7 +60,9 @@ const ContactUs = () => {
       try {
         result = JSON.parse(responseText);
       } catch (e) {
-        throw new Error("Invalid response from server. Make sure XAMPP Apache is running!");
+        throw new Error(
+          "Invalid response from server. For local dev, start a PHP server for /public and set REACT_APP_CONTACT_API_URL (e.g. http://localhost:8000/api/contact.php)."
+        );
       }
 
       if (response.ok && result.status === "success") {
@@ -63,6 +76,8 @@ const ContactUs = () => {
       console.error(err);
       setError(err.message || "Failed to send. Please try again.");
       setSuccess(false);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -137,7 +152,7 @@ const ContactUs = () => {
               </div>
 
               <div className="info-visual">
-                <img src={ContactUsImage} alt="Contact Patel Infotech" />
+                <img src={ContactUsImage} alt="Contact Patel Infotech Services" />
               </div>
             </motion.div>
 
@@ -190,6 +205,8 @@ const ContactUs = () => {
                 <motion.button
                   type="submit"
                   className="btn-primary"
+                  disabled={isSubmitting}
+                  aria-busy={isSubmitting}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

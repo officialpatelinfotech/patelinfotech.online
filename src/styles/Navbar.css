@@ -32,6 +32,29 @@
   color: #fff;
   letter-spacing: -0.04em;
   text-transform: lowercase;
+  min-width: 0;
+}
+
+.navbar-logo a {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.navbar-logo .site-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.navbar-logo .site-name {
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  line-height: 1.1;
+  min-width: 0;
 }
 
 .navbar-logo span {
@@ -126,6 +149,30 @@
     font-size: 1.2rem;
   }
 
+  .navbar-logo .site-logo {
+    height: 30px;
+  }
+
+  .navbar-logo a {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: calc(100vw - 110px);
+  }
+
+  .navbar-logo .site-name {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+
+@media (max-width: 380px) {
+  .navbar-logo .site-name {
+    font-size: 0.85rem;
+  }
+}
   .navbar-content {
     display: flex;
     justify-content: space-between;

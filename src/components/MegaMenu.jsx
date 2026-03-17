@@ -5,9 +5,6 @@ import "../styles/MegaMenu.css";
 
 // Import images
 import devImg from "../assets/images/mega_menu_development.png";
-import designImg from "../assets/images/mega_menu_design.png";
-import marketingImg from "../assets/images/mega_menu_marketing.png";
-import technicalImg from "../assets/images/mega_menu_technical.png";
 import aboutImg from "../assets/images/mega_menu_about_human.png";
 import clientsImg from "../assets/images/5569523_2880399.jpg";
 
@@ -73,7 +70,7 @@ const menuData = {
         ],
         featured: {
             title: "Join Our Network",
-            desc: "Join over 50+ partners scaling their business with Patel Infotech.",
+            desc: "Join over 50+ partners scaling their business with Patel Infotech Services.",
             image: clientsImg
         }
     }

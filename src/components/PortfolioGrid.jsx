@@ -64,7 +64,7 @@ const PortfolioGrid = () => {
                 </div>
 
                 <div className="portfolio-footer">
-                    <Link to="/projects" className="btn-secondary">
+                    <Link to="/our-clients" className="btn-secondary">
                         View all success stories
                     </Link>
                 </div>
